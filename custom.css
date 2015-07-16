@@ -3,20 +3,21 @@ html {
     background: rgb(128, 128, 128);
 }
 
-.hide-scrollbar {
-    overflow: hidden;
-}
-
 body {
     position: relative;
     top: 0px;
     min-height: 100%;
 }
 
+/*styling specific to atlautosports.com to push content down 50px to make room for top mobile responsive nav bar*/
+body div.page {
+    margin-top: 50px;
+}
+
 main {
     width: 100%;
     /*     height: 3000px; */
-    /* overflow: scroll; /* has to be scroll, not auto */  */
+    /* overflow: scroll; /* has to be scroll, not auto */
 }
 
 /*start hide responsive slide out navigation*/
@@ -27,159 +28,168 @@ main {
 /*start media query
 once we hit 640px width do the following...*/
 @media screen and (max-width: 640px) {
-    /*start show responsive slide out navigation*/
-    #nav__responsive * {
-        /*remove blue highlighting, you just need this if you are only concerned with android and not desktop browsers.*/
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-    #nav__responsive {
-        display: inline-block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9999;
-        width: 100%;
-        height: 50px;
-        background: #2B2B2B;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-    }
-    /*end show responsive slide out navigation*/
+    /*start custom styling for atlautosports.com*/
+    #home .ProductList li {
+      width: 50% !important;
+  }
+  #home .ProductList li:nth-child(n+5) {
+    display: none;
+  }
+  /*end custom styling for atlautosports.com*/
 
-    /*start nav left*/
-    #nav__responsive .nav__left {
-        float: left;
-        height: 100%;
-        width: 170px;
-    }
-    #nav__responsive .nav__left ul {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    #nav__responsive .nav__left ul li {
-        float: right;
-        width: 120px;
-        height: 100%;
-        text-align: left;
-        list-style-type: none;
-        background: #2B2B2B;
-        width: 119px;
-    }
-    #nav__responsive .nav__left ul li:first-child {
-        float: left;
-        width: 50px;
-        text-align: center;
-        background: #2B2B2B;
-        border-right: 1px solid rgb(81, 81, 81);
-    }
-    #nav__responsive .nav__left ul li:first-child a {
-        display: block;
-        height: 100%;
-        font-size: 21px;
-        color: #fff;
-    }
-    #nav__responsive .nav__left ul li:first-child a i {
-        position: absolute;
-        left: 15px;
-        top: 15px;
-    }
-    #nav__responsive .nav__left ul li:last-child a {
-        position: static;
-        display: inline-block;
-        height: 100%;
-    }
-    #nav__responsive .nav__left ul li:last-child a img {
-        display: block;
-        max-width: 92%;
-        max-height: 92%;
-        padding: 6%;
-        padding: 4%;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    /*end nav left*/
+  /*start show responsive slide out navigation*/
+  #nav__responsive * {
+    /*remove blue highlighting, you just need this if you are only concerned with android and not desktop browsers.*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#nav__responsive {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 50px;
+    background: #2B2B2B;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+/*end show responsive slide out navigation*/
 
-    /*start nav right*/
-    #nav__responsive .nav__right {
-        float: right;
-        width: calc(100% - 170px);
-        height: 50px;
-        background: #2B2B2B;
-        overflow: hidden;
-    }
-    #nav__responsive .nav__right ul {
-        float: right;
-        width: 150px;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    #nav__responsive .nav__right ul li {
-        display: inline-block;
-        float: left;
-        width: 49px;
-        height: 100%;
-        border-left: 1px solid rgb(81, 81, 81);
-    }
-    #nav__responsive .nav__right ul li a {
-        display: block;
-        height: 100%;
-        font-size: 21px;
-        color: #fff;
-    }
-    #nav__responsive .nav__right ul li a i {
-        position: relative;
-        left: 15px;
-        top: 15px;
-    }
-    /*end nav right*/
+/*start nav left*/
+#nav__responsive .nav__left {
+    float: left;
+    height: 100%;
+    width: 170px;
+}
+#nav__responsive .nav__left ul {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#nav__responsive .nav__left ul li {
+    float: right;
+    width: 120px;
+    height: 100%;
+    text-align: left;
+    list-style-type: none;
+    background: #2B2B2B;
+    width: 119px;
+}
+#nav__responsive .nav__left ul li:first-child {
+    float: left;
+    width: 50px;
+    text-align: center;
+    background: #2B2B2B;
+    border-right: 1px solid rgb(81, 81, 81);
+}
+#nav__responsive .nav__left ul li:first-child a {
+    display: block;
+    height: 100%;
+    font-size: 21px;
+    color: #fff;
+}
+#nav__responsive .nav__left ul li:first-child a i {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+#nav__responsive .nav__left ul li:last-child a {
+    position: static;
+    display: inline-block;
+    height: 100%;
+}
+#nav__responsive .nav__left ul li:last-child a img {
+    display: block;
+    max-width: 92%;
+    max-height: 92%;
+    padding: 6%;
+    padding: 4%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/*end nav left*/
 
-    /*start toggle animation*/
-    .nav__responsive--toggle {
-        /*top: 0 !important;*/
-        left: 265px !important;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-    }
-    /*end toggle animation*/
+/*start nav right*/
+#nav__responsive .nav__right {
+    float: right;
+    width: calc(100% - 170px);
+    height: 50px;
+    background: #2B2B2B;
+    overflow: hidden;
+}
+#nav__responsive .nav__right ul {
+    float: right;
+    width: 150px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#nav__responsive .nav__right ul li {
+    display: inline-block;
+    float: left;
+    width: 49px;
+    height: 100%;
+    border-left: 1px solid rgb(81, 81, 81);
+}
+#nav__responsive .nav__right ul li a {
+    display: block;
+    height: 100%;
+    font-size: 21px;
+    color: #fff;
+}
+#nav__responsive .nav__right ul li a i {
+    position: relative;
+    left: 15px;
+    top: 15px;
+}
+/*end nav right*/
 
-    /*start left pane slide out*/
+/*start toggle animation*/
+.nav__responsive--toggle {
+    /*top: 0 !important;*/
+    left: 265px !important;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+/*end toggle animation*/
 
-    /* Panes */
-    .external-pane {
-        height: 100%;
-        min-height: 100%;
-        width: 265px;
-        background: #2B2B2B;
-        position: fixed;
-        top: 0;
-        padding: 20px;
-        overflow: hidden;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-        z-index: 1001;
-        /*display: block;*/
-        /*overflow-y: auto;*/
-    }
+/*start left pane slide out*/
 
-    /* Left Pane */
-    .left-pane {
-        left: -265px;
-        padding: 15px 15px 15px 15px;
-    }
-    html.leftopen .left-pane {
-        left: 0;
+/* Panes */
+.external-pane {
+    height: 100%;
+    min-height: 100%;
+    width: 265px;
+    background: #2B2B2B;
+    position: fixed;
+    top: 0;
+    padding: 20px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    /*display: block;*/
+    /*overflow-y: auto;*/
+}
+
+/* Left Pane */
+.left-pane {
+    left: -265px;
+    padding: 15px 15px 15px 15px;
+}
+html.leftopen .left-pane {
+    left: 0;
         /*         height: 100%;
         z-index: 9999; */
     }

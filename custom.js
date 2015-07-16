@@ -8,9 +8,14 @@ var responsive = {
     init: function(){
         if(window.innerWidth < 640){
             responsive.buildPagesMenu();
+            responsive.togglefreezePageScroll();
             responsive.toggleSearchField();
         }
     },
+    configs: {
+        /*this fixes the issue where on mobile when you scroll down, some elements jump out of design because the address bar disappears, this freezes the entire document's html when the slide out navigation is active to lock elements into place including the chrome address bar*/
+        freezePageScrollScroll: false
+    }, 
     buildPagesMenu: function(){
         /*start create the entire left pane that will contain all the other stuff*/
         var leftPaneHTML = '<div class="left-pane external-pane"></div>';
@@ -36,12 +41,6 @@ var responsive = {
 
         // var categoriesPane = '<div class="categories-pane pane-menu"><h3 class="border-color-primary">Browse By Category</h3></div>';
 
-
-
-
-
-
-
         // var categoryMenu = $('.CategoryList > div > ul').clone().appendTo($('.categories-pane'));
 
         /* Cleanup */
@@ -61,7 +60,9 @@ var responsive = {
             responsive.toggleLeftPane();
             $("#nav__responsive").toggleClass('nav__responsive--toggle');
             $(".search__bar").toggleClass('nav__responsive--toggle');
-            $("html").toggleClass('hide-scrollbar');
+            responsive.togglefreezePageScroll();
+
+
         });
     },
     toggleLeftPane: function(){
@@ -76,19 +77,10 @@ var responsive = {
             }, 100);
         } else {
             html.toggleClass('leftopen');
-//             $("html").css({"overflow":"hidden"});
+            //             $("html").css({"overflow":"hidden"});
             // searchBar.toggleClass('leftopen');
             // searchBar.css({"left":"295px"});
         }
-
-        /*refactor to include this whenever tapping inside input text field, it zooms in, however, when tapping on the hamburger icon to open the slide out menu while zoomed in, it stays zoomed in, making it difficult to press the hamburger button again to close the left slide out navigation
-        find a fix
-        resource: http://stackoverflow.com/questions/5111964/disable-auto-zoom-field-zoom-on-input-tags-on-my-mobile-site-without-disabling & http://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone*/
-        var $viewportMeta = $('meta[name="viewport"]');
-        $('input, select, textarea').bind('focus blur', function(event) {
-        $viewportMeta.attr('content', 'width=device-width,initial-scale=1,maximum-scale=' +        (event.type == 'blur' ? 10 : 1));
-        });
-        /*end find fix for zoom in issue*/
     },
     checkLeftPaneForOpen: function(){
         if($('html').hasClass('leftopen')){
@@ -97,28 +89,47 @@ var responsive = {
             return false;
         }
     },
+    togglefreezePageScroll: function(){
+         
+        $('.button__toggle').on('click',function(){            
+            if (responsive.configs.freezePageScrollScroll === false) {  
+                responsive.freezePageScroll(); 
+            } else {                 
+                responsive.unfreezePageScroll();
+            }            
+        });
+        responsive.configs.freezePageScrollScroll = false;
+    }, 
+    freezePageScroll: function(){
+        $("html").css({"overflow":"hidden"});
+        return responsive.configs.freezePageScrollScroll = true;
+    }, 
+    unfreezePageScroll: function(){
+        $("html").css({"overflow":"auto"});
+        return responsive.configs.freezePageScrollScroll = false;
+    }, 
+    toggleSearchField: function(){        
+        /*start search button toggle show and hide methods*/
+        $('.search__toggle').on('click', function(e){
+            e.preventDefault();
+            if($(".search__bar").hasClass('show')) {
+                responsive.hideSearchField();
+            } else {
+                responsive.showSearchField();
+            }
+        });
+        /*end search button toggle show and hide methods*/
+    }, 
     showSearchField: function(){
         $(".search__bar").addClass('show');
         $(".search__toggle").css({"background":"#fff"});
         $(".search__toggle > a").css({"color":"#ba0001"});
-        /*this next line refactor to a more abstract selector*/
+        /*this next line refactor to a more abstract selector, this line is custom to atlsports.com, may remove this line anytime*/
         $(".h-search #SearchForm").css({"padding":"3px 0 0 10px", "background":"none"});
     },
-    removeSearchField: function(){
+    hideSearchField: function(){
         $(".search__bar").removeClass('show');
         $(".search__toggle").css({"background":"#2B2B2B"});
         $(".search__toggle > a").css({"color":"#fff"});
     },
-    toggleSearchField: function(){
-
-        $('.search__toggle').on('click', function(e){
-            e.preventDefault();
-            if($(".search__bar").hasClass('show')) {
-                responsive.removeSearchField();
-            } else {
-                responsive.showSearchField();
-            }
-
-        });
-    }
 }
