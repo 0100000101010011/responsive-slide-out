@@ -16,3 +16,8 @@ var pageMenuContainer = '<div class="page-menu-container"></div>';
 $('.slide-out-panel').append(pageMenuContainer);
 $('#DrawerMenu ul.pages-menu').clone().appendTo($(".page-menu-container"));
 /*end create pages menu*/
+
+/*add delay to left slide out*/
+var delayedOpenLeft = window.setTimeout(function(){
+    html.toggleClass('left-slide-out-panel-open');
+}, 10);
