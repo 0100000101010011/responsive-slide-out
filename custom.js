@@ -1,15 +1,21 @@
+/*
+author: alvin sanchez
+origin: ransom carroll, for the goodvibes theme by cart designers
+ver: 1.x
+*/
+
 // start trigger responsive slide out navigation
 $(document).ready(function(){
-    responsive.init();
+    responsiveSlideOut.init();
 });
 
 // start build responsive slide out navigation
-var responsive = {
+var responsiveSlideOut = {
     init: function(){
         if(window.innerWidth < 640){
-            responsive.buildPagesMenu();
-            responsive.togglefreezePageScroll();
-            responsive.toggleSearchField();
+            responsiveSlideOut.buildPagesMenu();
+            responsiveSlideOut.togglefreezePageScroll();
+            responsiveSlideOut.toggleSearchField();
         }
     },
     configs: {
@@ -57,10 +63,10 @@ var responsive = {
 
         // button toggle event
         $('.button__toggle').on('click',function(){
-            responsive.toggleLeftPane();
+            responsiveSlideOut.toggleLeftPane();
             $("#nav__responsive").toggleClass('nav__responsive--toggle');
             $(".search__bar").toggleClass('nav__responsive--toggle');
-            responsive.togglefreezePageScroll();
+            responsiveSlideOut.togglefreezePageScroll();
 
 
         });
@@ -92,30 +98,30 @@ var responsive = {
     togglefreezePageScroll: function(){
          
         $('.button__toggle').on('click',function(){            
-            if (responsive.configs.freezePageScrollScroll === false) {  
-                responsive.freezePageScroll(); 
+            if (responsiveSlideOut.configs.freezePageScrollScroll === false) {  
+                responsiveSlideOut.freezePageScroll(); 
             } else {                 
-                responsive.unfreezePageScroll();
+                responsiveSlideOut.unfreezePageScroll();
             }            
         });
-        responsive.configs.freezePageScrollScroll = false;
+        responsiveSlideOut.configs.freezePageScrollScroll = false;
     }, 
     freezePageScroll: function(){
         $("html").css({"overflow":"hidden"});
-        return responsive.configs.freezePageScrollScroll = true;
+        return responsiveSlideOut.configs.freezePageScrollScroll = true;
     }, 
     unfreezePageScroll: function(){
         $("html").css({"overflow":"auto"});
-        return responsive.configs.freezePageScrollScroll = false;
+        return responsiveSlideOut.configs.freezePageScrollScroll = false;
     }, 
     toggleSearchField: function(){        
         /*start search button toggle show and hide methods*/
         $('.search__toggle').on('click', function(e){
             e.preventDefault();
             if($(".search__bar").hasClass('show')) {
-                responsive.hideSearchField();
+                responsiveSlideOut.hideSearchField();
             } else {
-                responsive.showSearchField();
+                responsiveSlideOut.showSearchField();
             }
         });
         /*end search button toggle show and hide methods*/
