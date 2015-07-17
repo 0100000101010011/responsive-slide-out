@@ -44,7 +44,7 @@ var responsiveSlideOut = {
 
         //render head content block at top of slideout panel
         //the dir="ltr" used in the anchor tag is used to fix bug where the phone number text with hyphens renders out of order
-        var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-227-2537" dir="ltr"><i class="fa fa-phone"></i>866-2-BRAKES</a><small>(866-227-2537)</small></li><li>Se Habla Español</li></ul></div>';
+        var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-555-5555" dir="ltr"><i class="fa fa-phone"></i>866-5-NUMBER</a><small>(866-555-5555)</small></li><li>call to action/selling point</li></ul></div>';
         $('.slide-out-panel').prepend(renderHeadContentBlockHtml);
     },
     toggleLeftSlideOutPanel: function(){

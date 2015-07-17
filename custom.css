@@ -251,7 +251,8 @@ once we hit 640px width do the following...*/
     }
     .slide-out-panel .call-to-action-item ul li small {
         float: right;
-        padding: .1rem 0 0 0;
+        padding: .3rem 0 0 0;
+        font-size: 0.7rem;
         font-weight: bold;
         color: #8B8B8B;
         color: #81AE8C;
