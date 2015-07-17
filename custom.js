@@ -90,11 +90,11 @@ var responsiveSlideOut = {
         $('.darken-page').css({
             visibility: 'hidden', 
             background : 'rgba(0, 0, 0, 0)', 
-            WebkitTransition : 'background .25s ease-in 0s, visibility .25s',
-            MozTransition    : 'background .25s ease-in 0s, visibility .25s',
-            MsTransition     : 'background .25s ease-in 0s, visibility .25s',
-            OTransition      : 'background .25s ease-in 0s, visibility .25s',
-            transition       : 'background .25s ease-in 0s, visibility .25s', 
+            WebkitTransition : 'background .25s ease-in 0s, visibility .25s ease-in',
+            MozTransition    : 'background .25s ease-in 0s, visibility .25s ease-in',
+            MsTransition     : 'background .25s ease-in 0s, visibility .25s ease-in',
+            OTransition      : 'background .25s ease-in 0s, visibility .25s ease-in',
+            transition       : 'background .25s ease-in 0s, visibility .25s ease-in', 
         });
     }, 
     toggleFreezePageScroll: function(){
