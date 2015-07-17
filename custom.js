@@ -4,12 +4,12 @@ origin: ransom carroll, for the goodvibes theme by cart designers
 ver: 1.x
 */
 
-// ready
+//ready
 $(document).ready(function(){
     responsiveSlideOut.init();
 });
 
-// start build responsive slide out navigation
+//start build responsive slide out navigation
 var responsiveSlideOut = {
     init: function(){
         if(window.innerWidth < 640){
@@ -81,7 +81,7 @@ var responsiveSlideOut = {
     }, 
     toggleSearchField: function(){        
         //when search button is clicked
-        //refactor this to now depend on the external css for .show, but to create it dynamically here
+        //refactor this to not depend on the external css for .show, but to create it dynamically here
         $('.search__button--magnifyingglass').on('click', function(e){
             e.preventDefault();
             if($(".searchbar__container").hasClass('show')) {
@@ -95,7 +95,6 @@ var responsiveSlideOut = {
         $(".searchbar__container").addClass('show');
         $(".search__button--magnifyingglass").css({"background":"#fff"});
         $(".search__button--magnifyingglass > a").css({"color":"#ba0001"});
-
     },
     hideSearchField: function(){
         $(".searchbar__container").removeClass('show');
