@@ -60,10 +60,22 @@ var responsiveSlideOut = {
         if($('html').hasClass('left-slide-out-panel-open')){
             //render dark overlay
             responsiveSlideOut.renderDarkPageOverlay();
+            //toggle hamburger button color for open and close states
+            $('.slideout__button--hamburger').css({
+                background: '#a91e23', 
+                WebkitTransition : 'background .50s ease-in 0s',
+                MozTransition    : 'background .50s ease-in 0s',
+                MsTransition     : 'background .50s ease-in 0s',
+                OTransition      : 'background .50s ease-in 0s',
+                transition       : 'background .50s ease-in 0s',
+                "border-right": '1px solid #a91e23'
+            });
             return true;
         } else {
             //remove dark page overlay
             responsiveSlideOut.removeDarkPageOverlay();
+            //toggle hamburger button color for open and close states
+            $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
             return false;
         }
     }, 
