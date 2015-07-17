@@ -9,6 +9,14 @@ body {
     min-height: 100%;
 }
 
+body::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: rgba(0, 0, 0, .6);
+}
+
 /*styling specific to atlautosports.com to push content down 50px to make room for top mobile responsive nav bar*/
 body div.page {
     margin-top: 50px;

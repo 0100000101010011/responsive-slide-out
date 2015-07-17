@@ -46,6 +46,8 @@ var responsiveSlideOut = {
         //the dir="ltr" used in the anchor tag is used to fix bug where the phone number text with hyphens renders out of order
         var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-555-5555" dir="ltr"><i class="fa fa-phone"></i>866-5-NUMBER</a><small>(866-555-5555)</small></li><li>call to action/selling point</li></ul></div>';
         $('.slide-out-panel').prepend(renderHeadContentBlockHtml);
+        var renderDarkPageOverlay = '<div class="darken-page"></div>';
+        $('body').prepend(renderDarkPageOverlay);
     },
     toggleLeftSlideOutPanel: function(){
         //toggle show/hide left slideout panel
@@ -53,10 +55,39 @@ var responsiveSlideOut = {
         html.toggleClass('left-slide-out-panel-open');
         //test toggle status (optional check to create events based on toggleClass state)
         if($('html').hasClass('left-slide-out-panel-open')){
+            //render dark overlay
+            responsiveSlideOut.renderDarkPageOverlay();
             return true;
         } else {
+            //remove dark page overlay
+            responsiveSlideOut.removeDarkPageOverlay();
             return false;
         }
+    }, 
+    renderDarkPageOverlay() {
+        //darken the page
+        $('.darken-page').css({
+            "opacity":"0.5", 
+            "background":"#000", 
+            "width":"100%", 
+            "height":"100%", 
+            "z-index":"10", 
+            "top":"0", 
+            "left":"0", 
+            "position":"fixed", 
+            "transition":"opacity .25s ease-out-in", 
+            "-moz-transition":"opacity .25s ease-out-in", 
+            "-webkit-transition":"opacity .25s ease-out-in"
+        });
+    }, 
+    removeDarkPageOverlay() {
+        //darken the page
+        $('.darken-page').css({
+            "opacity":"0", 
+            "transition":"opacity .25s ease-in-out", 
+            "-moz-transition":"opacity .25s ease-in-out", 
+            "-webkit-transition":"opacity .25s ease-in-out"
+        });
     }, 
     toggleFreezePageScroll: function(){
         //merge with triggerEvent method's code
