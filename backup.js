@@ -37,7 +37,10 @@ var responsiveSlideOut = {
             $(".searchbar__container").toggleClass('nav__responsive--toggle');
         });
     }, 
-    renderResponsiveSlideOutInterface: function(){        
+    renderResponsiveSlideOutInterface: function(){
+//                 var renderDarkPageOverlay = '<div class="darken-page"></div>';
+//         $('body').prepend(renderDarkPageOverlay);
+        
         //render slideout panel     
         var renderSlideOutPanelHtml = '<div class="left-slide-out-panel slide-out-panel"></div>';
         $('html').append(renderSlideOutPanelHtml);
@@ -46,10 +49,6 @@ var responsiveSlideOut = {
         //the dir="ltr" used in the anchor tag is used to fix bug where the phone number text with hyphens renders out of order
         var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-555-5555" dir="ltr"><i class="fa fa-phone"></i>866-5-NUMBER</a><small>(866-555-5555)</small></li><li>call to action/selling point</li></ul></div>';
         $('.slide-out-panel').prepend(renderHeadContentBlockHtml);
-
-        //render dark page overlay
-        var renderDarkPageOverlay = '<div class="darken-page"></div>';
-        $('body').prepend(renderDarkPageOverlay);
 
     },
     toggleLeftSlideOutPanel: function(){
@@ -67,10 +66,10 @@ var responsiveSlideOut = {
             return false;
         }
     }, 
-    renderDarkPageOverlay: function() {
+    renderDarkPageOverlay() {
         //darken the page
         $('.darken-page').css({
-            "opacity":"0.4", 
+            "opacity":"0.5", 
             "background":"#000", 
             "width":"100%", 
             "height":"100%", 
@@ -83,7 +82,7 @@ var responsiveSlideOut = {
             "-webkit-transition":"opacity .25s ease-out-in"
         });
     }, 
-    removeDarkPageOverlay: function() {
+    removeDarkPageOverlay() {
         //darken the page
         $('.darken-page').css({
             "opacity":"0", 
