@@ -70,26 +70,31 @@ var responsiveSlideOut = {
     renderDarkPageOverlay: function() {
         //darken the page
         $('.darken-page').css({
-            "opacity":"0.4", 
-            "background":"#000", 
-            "width":"100%", 
-            "height":"100%", 
-            "z-index":"0", 
-            "top":"0", 
-            "left":"0", 
-            "position":"fixed", 
-            "transition":"opacity .25s ease-out-in", 
-            "-moz-transition":"opacity .25s ease-out-in", 
-            "-webkit-transition":"opacity .25s ease-out-in"
+            background : 'rgba(0, 0, 0, .5)', 
+            width :'100%', 
+            height : '100%', 
+            "z-index" : '10', 
+            top : '0', 
+            left : '0', 
+            position : 'fixed',
+            visibility: 'visible', 
+            WebkitTransition : 'background .25s ease-in 0s',
+            MozTransition    : 'background .25s ease-in 0s',
+            MsTransition     : 'background .25s ease-in 0s',
+            OTransition      : 'background .25s ease-in 0s',
+            transition       : 'background .25s ease-in 0s', 
         });
     }, 
     removeDarkPageOverlay: function() {
         //darken the page
         $('.darken-page').css({
-            "opacity":"0", 
-            "transition":"opacity .25s ease-in-out", 
-            "-moz-transition":"opacity .25s ease-in-out", 
-            "-webkit-transition":"opacity .25s ease-in-out"
+            visibility: 'hidden', 
+            background : 'rgba(0, 0, 0, 0)', 
+            WebkitTransition : 'background .25s ease-in 0s, visibility .25s',
+            MozTransition    : 'background .25s ease-in 0s, visibility .25s',
+            MsTransition     : 'background .25s ease-in 0s, visibility .25s',
+            OTransition      : 'background .25s ease-in 0s, visibility .25s',
+            transition       : 'background .25s ease-in 0s, visibility .25s', 
         });
     }, 
     toggleFreezePageScroll: function(){
