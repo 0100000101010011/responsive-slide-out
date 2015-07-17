@@ -246,7 +246,7 @@ once we hit 640px width do the following...*/
         display: inline-block;
         font-weight: bold;
         text-decoration: none;
-        color: rgb(186, 0, 1);
+        color: #a91e23;
         color: #fff;
     }
     .slide-out-panel .call-to-action-item ul li small {
@@ -263,7 +263,7 @@ once we hit 640px width do the following...*/
         font-weight: bold;
         font-style: italic;
         text-align: center;
-        color: rgb(186, 0, 1);
+        color: #a91e23;
         background: #fff;
     }
     /*end call to action menu*/

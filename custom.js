@@ -94,7 +94,7 @@ var responsiveSlideOut = {
     showSearchField: function(){
         $(".searchbar__container").addClass('show');
         $(".search__button--magnifyingglass").css({"background":"#fff"});
-        $(".search__button--magnifyingglass > a").css({"color":"#ba0001"});
+        $(".search__button--magnifyingglass > a").css({"color":"#a91e23"});
     },
     hideSearchField: function(){
         $(".searchbar__container").removeClass('show');
