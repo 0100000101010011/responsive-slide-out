@@ -1,7 +1,7 @@
 /*
 author: alvin sanchez
 origin: ransom carroll, for the goodvibes theme by cart designers
-ver: 1.x
+ver: 1.0
 */
 
 //ready
@@ -63,12 +63,12 @@ var responsiveSlideOut = {
             //toggle hamburger button color for open and close states
             $('.slideout__button--hamburger').css({
                 background: '#a91e23', 
-                WebkitTransition : 'background .50s ease-in 0s',
-                MozTransition    : 'background .50s ease-in 0s',
-                MsTransition     : 'background .50s ease-in 0s',
-                OTransition      : 'background .50s ease-in 0s',
-                transition       : 'background .50s ease-in 0s',
-                "border-right": '1px solid #a91e23'
+                "border-right": '1px solid #a91e23', 
+                WebkitTransition : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+                MozTransition    : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+                MsTransition     : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+                OTransition      : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+                transition       : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
             });
             return true;
         } else {
@@ -96,6 +96,8 @@ var responsiveSlideOut = {
             OTransition      : 'background .25s ease-in 0s',
             transition       : 'background .25s ease-in 0s', 
         });
+        
+
     }, 
     removeDarkPageOverlay: function() {
         //darken the page

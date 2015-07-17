@@ -9,7 +9,7 @@ body {
     min-height: 100%;
 }
 
-body::after {
+body:after {
     content: "";
     display: block;
     width: 100%;
@@ -60,9 +60,6 @@ once we hit 640px width do the following...*/
         height: 50px;
         background: #2B2B2B;
         -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
     /*end show responsive slide out navigation*/
@@ -118,6 +115,8 @@ once we hit 640px width do the following...*/
         padding: 4%;
         position: relative;
         top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
     /*end nav left*/
@@ -162,9 +161,6 @@ once we hit 640px width do the following...*/
         /*top: 0 !important;*/
         left: 265px !important;
         -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
     /*end toggle animation*/
@@ -182,9 +178,6 @@ once we hit 640px width do the following...*/
         padding: 20px;
         overflow: hidden;
         -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
         transition: all 0.3s ease;
         z-index: 1001;
     }
@@ -212,9 +205,6 @@ once we hit 640px width do the following...*/
         background: #fff;
 
         -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
         transition: all 0.3s ease;
     }
     /*to show and hide the search bar*/
