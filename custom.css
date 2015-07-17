@@ -164,7 +164,7 @@ once we hit 640px width do the following...*/
 /*start left pane slide out*/
 
 /* Panes */
-.external-pane {
+.slide-out-panel {
     height: 100%;
     min-height: 100%;
     width: 265px;
@@ -184,11 +184,11 @@ once we hit 640px width do the following...*/
 }
 
 /* Left Pane */
-.left-pane {
+.left-slide-out-panel {
     left: -265px;
     padding: 15px 15px 15px 15px;
 }
-html.leftopen .left-pane {
+html.left-slide-out-panel-open .left-slide-out-panel {
     left: 0;
         /*         height: 100%;
         z-index: 9999; */
@@ -222,45 +222,45 @@ html.leftopen .left-pane {
 
     /*start left slide-out menu panel styling*/
 
-    .external-pane {
+    .slide-out-panel {
         padding: 0;
         font-family: "Lato", Arial, Sans-serif;
     }
     /*start call to action menu*/
-    .external-pane .call-to-action-item {
+    .slide-out-panel .call-to-action-item {
         background: #fff;
         background: #005C18;
     }
-    .external-pane .call-to-action-item ul {
+    .slide-out-panel .call-to-action-item ul {
         margin: 0;
         padding: 0;
     }
-    .external-pane .call-to-action-item ul li {
+    .slide-out-panel .call-to-action-item ul li {
         padding: .8rem;
         font-size: 1rem;
         text-align: left;
     }
-    .external-pane .call-to-action-item ul li a i {
+    .slide-out-panel .call-to-action-item ul li a i {
         float: left;
         padding: 0 .7rem 0 0;
         font-size: 1.5rem;
         color: #fff;
     }
-    .external-pane .call-to-action-item ul li a {
+    .slide-out-panel .call-to-action-item ul li a {
         display: inline-block;
         font-weight: bold;
         text-decoration: none;
         color: rgb(186, 0, 1);
         color: #fff;
     }
-    .external-pane .call-to-action-item ul li small {
+    .slide-out-panel .call-to-action-item ul li small {
         float: right;
         padding: .1rem 0 0 0;
         font-weight: bold;
         color: #8B8B8B;
         color: #81AE8C;
     }
-    .external-pane .call-to-action-item ul li:last-child {
+    .slide-out-panel .call-to-action-item ul li:last-child {
         padding: .4rem;
         font-size: 1rem;
         font-weight: bold;
@@ -273,7 +273,7 @@ html.leftopen .left-pane {
 
     /*start pages menu*/
 
-    .external-pane .page-menu-container > ul > li {
+    .slide-out-panel .page-menu-container > ul > li {
         display: inline-block;
         width: 100%;
         text-align: left;
@@ -282,7 +282,7 @@ html.leftopen .left-pane {
         background: #2B2B2B;
         border-bottom: 1px solid rgb(81, 81, 81);
     }
-    .external-pane .page-menu-container > ul > li a {
+    .slide-out-panel .page-menu-container > ul > li a {
         font-weight: 400;
         color: #fff;
     }
