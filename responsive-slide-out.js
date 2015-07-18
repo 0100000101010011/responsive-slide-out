@@ -1,6 +1,6 @@
 /*
 author: alvin sanchez
-origin: ransom carroll, for the goodvibes theme by cart designers
+origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigners.com
 ver: 1.0
 */
 
