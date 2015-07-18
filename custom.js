@@ -13,11 +13,118 @@ $(document).ready(function(){
 var responsiveSlideOut = {
     init: function(){
         if(window.innerWidth < 640){
-            responsiveSlideOut.triggerEvents();
             responsiveSlideOut.renderResponsiveSlideOutInterface();
+            responsiveSlideOut.triggerEvents();            
             responsiveSlideOut.toggleFreezePageScroll();
             responsiveSlideOut.toggleSearchField();
         }
+    },
+    renderResponsiveSlideOutInterface: function(){    
+        //render top nav container html
+        var renderTopNavContainerHtml = '<section id="top-nav"></section>';
+        $(renderTopNavContainerHtml).prependTo('#header');
+
+        //render top nav html
+        var renderTopNavHtml = '<nav id="nav__responsive"></nav>';
+        $(renderTopNavHtml).prependTo('#top-nav');
+
+        //render top left nav html
+        var renderTopLeftNavHtml = '<div class="nav__left"></div>';
+        $(renderTopLeftNavHtml).prependTo('#nav__responsive');
+
+        //render top left nav unordered list html
+        var renderTopLeftNavUnorderedListHtml = '<ul class="nav__left--ul"></ul>';
+        $(renderTopLeftNavUnorderedListHtml).prependTo(".nav__left");
+
+        //render top left nav unordered list item html
+        var renderTopLeftNavUnorderedListItemHtml = '<li class="slideout__button--hamburger"></li>';
+        $(renderTopLeftNavUnorderedListItemHtml).prependTo('.nav__left--ul');
+
+        //render top left nav unordered list item hamburger link html
+        var renderTopLeftNavUnorderedListItemHamburgerLinkHtml = '<a class="hamburger__link" href="#"></a>';
+        $(renderTopLeftNavUnorderedListItemHamburgerLinkHtml).prependTo('.slideout__button--hamburger');
+
+        //render top left nav unordered list item hamburger link icon html
+        var renderTopLeftNavUnorderedListItemHamburgerLinkIconHtml = '<i class="fa fa-bars"></i>';
+        $(renderTopLeftNavUnorderedListItemHamburgerLinkIconHtml).prependTo('.hamburger__link');
+
+        //render top left nav unordered list item logo html
+        var renderTopLeftNavUnorderedListItemHtml = '<li class="slideout__logo"></li>';
+        $(renderTopLeftNavUnorderedListItemHtml).appendTo('.nav__left--ul');
+
+        //render top left nav unordered list item logo link html
+        var renderTopLeftNavUnorderedListItemLogoLinkHtml = '<a class="logo__link" href="/"></a>';
+        $(renderTopLeftNavUnorderedListItemLogoLinkHtml).appendTo('.slideout__logo');
+
+        //render top left nav unordered list item logo link image html
+        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png">';
+        $(renderTopLeftNavUnorderedListItemLogoLinkImageHtml).appendTo('.logo__link');
+
+        //render top right nav html
+        var renderTopRightNavHtml = '<div class="nav__right"></div>';
+        $(renderTopRightNavHtml).appendTo('#nav__responsive');
+
+        //render top right nav unordered list html
+        var renderToprightNavUnorderedListHtml = '<ul class="nav__right--ul"></ul>';
+        $(renderToprightNavUnorderedListHtml).prependTo(".nav__right");
+
+        //render top right nav unordered list item search html
+        var renderToprightNavUnorderedListItemSearchHtml = '<li class="search__button--magnifyingglass"></li>';
+        $(renderToprightNavUnorderedListItemSearchHtml).prependTo(".nav__right--ul");
+
+        //render top right nav unordered list item magnifying glass link html
+        var renderToprightNavUnorderedListItemMagnifyingGlassLinkHtml = '<a class="magnifyingglass__link" href="#"></a>';
+        $(renderToprightNavUnorderedListItemMagnifyingGlassLinkHtml).prependTo(".search__button--magnifyingglass");
+
+        //render top right nav unordered list item magnifying glass link icon html
+        var renderToprightNavUnorderedListItemMagnifyingGlassLinkIconHtml = '<i class="fa fa-search"></i>';
+        $(renderToprightNavUnorderedListItemMagnifyingGlassLinkIconHtml).prependTo(".magnifyingglass__link");
+
+        //render top right nav unordered list item account html
+        var renderToprightNavUnorderedListItemAccountHtml = '<li class="account__button--user"></li>';
+        $(renderToprightNavUnorderedListItemAccountHtml).appendTo(".nav__right--ul");
+
+        //render top right nav unordered list item account link html
+        var renderToprightNavUnorderedListItemAccountLinkHtml = '<a class="account__link" href="#"></a>';
+        $(renderToprightNavUnorderedListItemAccountLinkHtml).prependTo(".account__button--user");
+
+        //render top right nav unordered list item account link icon html
+        var renderToprightNavUnorderedListItemAccountLinkIconHtml = '<i class="fa fa-user"></i>';
+        $(renderToprightNavUnorderedListItemAccountLinkIconHtml).prependTo(".account__link");                
+
+        //render top right nav unordered list item cart html
+        var renderToprightNavUnorderedListItemCartHtml = '<li class="cart__button--shoppingcart"></li>';
+        $(renderToprightNavUnorderedListItemCartHtml).appendTo(".nav__right--ul");  
+
+        //render top right nav unordered list item cart link html
+        var renderToprightNavUnorderedListItemCartLinkHtml = '<a class="cart__link" href="#"></a>';
+        $(renderToprightNavUnorderedListItemCartLinkHtml).prependTo(".cart__button--shoppingcart"); 
+
+        //render top right nav unordered list item cart link icon html
+        var renderToprightNavUnorderedListItemCartLinkIconHtml = '<i class="fa fa-shopping-cart"></i>';
+        $(renderToprightNavUnorderedListItemCartLinkIconHtml).prependTo(".cart__link"); 
+
+        //render top left nav search bar container html
+        var renderTopLeftNavSearchBarContainerHtml = '<div class="searchbar__container"></div>';
+        $(renderTopLeftNavSearchBarContainerHtml).appendTo('#nav__responsive');
+
+        //render top left nav search bar container sample search input container html
+        var renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml = '<div class="sample-search-input-container-may-delete"></div>';
+        $(renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml).prependTo('.searchbar__container');
+
+        //render slideout panel     
+        var renderSlideOutPanelHtml = '<div class="left-slide-out-panel slide-out-panel"></div>';
+        $('html').append(renderSlideOutPanelHtml);
+
+        //render head content block at top of slideout panel
+        //the dir="ltr" used in the anchor tag is used to fix bug where the phone number text with hyphens renders out of order
+        var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-555-5555" dir="ltr"><i class="fa fa-phone"></i>866-5-NUMBER</a><small>(866-555-5555)</small></li><li>call to action/selling point</li></ul></div>';
+        $('.slide-out-panel').prepend(renderHeadContentBlockHtml);
+
+        //render dark page overlay
+        var renderDarkPageOverlay = '<div class="darken-page"></div>';
+        $('body').prepend(renderDarkPageOverlay);
+
     },
     configs: {
         //configure overflow: hidden; to toggle dynamically on <html> element: 
@@ -37,21 +144,6 @@ var responsiveSlideOut = {
             $(".searchbar__container").toggleClass('nav__responsive--toggle');
         });
     }, 
-    renderResponsiveSlideOutInterface: function(){        
-        //render slideout panel     
-        var renderSlideOutPanelHtml = '<div class="left-slide-out-panel slide-out-panel"></div>';
-        $('html').append(renderSlideOutPanelHtml);
-
-        //render head content block at top of slideout panel
-        //the dir="ltr" used in the anchor tag is used to fix bug where the phone number text with hyphens renders out of order
-        var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-555-5555" dir="ltr"><i class="fa fa-phone"></i>866-5-NUMBER</a><small>(866-555-5555)</small></li><li>call to action/selling point</li></ul></div>';
-        $('.slide-out-panel').prepend(renderHeadContentBlockHtml);
-
-        //render dark page overlay
-        var renderDarkPageOverlay = '<div class="darken-page"></div>';
-        $('body').prepend(renderDarkPageOverlay);
-
-    },
     toggleLeftSlideOutPanel: function(){
         //toggle show/hide left slideout panel
         var html = $('html');
@@ -96,7 +188,7 @@ var responsiveSlideOut = {
             OTransition      : 'background .25s ease-in 0s',
             transition       : 'background .25s ease-in 0s', 
         });
-        
+
 
     }, 
     removeDarkPageOverlay: function() {
