@@ -21,6 +21,7 @@ var responsiveSlideOut = {
     },
     renderResponsiveSlideOutInterface: function(){    
         //render top nav container html
+        //here, latch onto the element to render the slide out components/elements into, here im rendering the slide out inside the <header>
         var renderTopNavContainerHtml = '<section id="top-nav"></section>';
         $(renderTopNavContainerHtml).prependTo('#header');
 
