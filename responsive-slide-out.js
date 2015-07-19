@@ -21,6 +21,7 @@ var responsiveSlideOut = {
         }
     },
     configs: {
+        logoUrl: 'http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png', 
         //configure overflow: hidden; to toggle dynamically on <html> element: 
         //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
         freezePageScroll: false
@@ -179,11 +180,11 @@ var responsiveSlideOut = {
         $(renderTopLeftNavUnorderedListItemHtml).appendTo('.nav__left--ul');
 
         //render top left nav unordered list item logo link html
-        var renderTopLeftNavUnorderedListItemLogoLinkHtml = '<a class="logo__link" href="/"></a>';
+        var renderTopLeftNavUnorderedListItemLogoLinkHtml = '<a class="logo__link" href="/demo.html"></a>';
         $(renderTopLeftNavUnorderedListItemLogoLinkHtml).appendTo('.slideout__logo');
 
         //render top left nav unordered list item logo link image html
-        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png">';
+        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + responsiveSlideOut.configs.logoUrl + '">';
         $(renderTopLeftNavUnorderedListItemLogoLinkImageHtml).appendTo('.logo__link');
 
         //render top right nav html
