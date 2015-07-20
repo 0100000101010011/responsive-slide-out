@@ -21,6 +21,8 @@ var responsiveSlideOut = {
         }
     },
     configs: {
+        googleFonts: '<link href="//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">', 
+        awesomeFonts: '<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">', 
         logoUrl: 'http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png', 
         //configure overflow: hidden; to toggle dynamically on <html> element: 
         //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
@@ -142,7 +144,7 @@ var responsiveSlideOut = {
         $(".search__button--magnifyingglass > a").css({"color":"#fff"});
     },
     renderResponsiveSlideOutInterface: function(){ 
-        
+
         //render slide out nav container
         var renderSlideOutNavContainer = '<div id="slide-out-nav-container"></div>';
         $(renderSlideOutNavContainer).prependTo('body');
@@ -254,6 +256,12 @@ var responsiveSlideOut = {
 
     },
     styleResponsiveSlideOutInterface: function() {
+
+        //call in awesome fonts
+        $(responsiveSlideOut.configs.awesomeFonts).prependTo('head');
+        //call in google fonts
+        $(responsiveSlideOut.configs.googleFonts).prependTo('head');
+
         //global styling
         $('html').css({
             height: '100%', 
