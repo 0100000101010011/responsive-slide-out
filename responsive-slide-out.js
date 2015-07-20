@@ -199,7 +199,7 @@ var responsiveSlideOut = {
 
         //render top right nav unordered list item search html
         var renderToprightNavUnorderedListItemSearchHtml = '<li class="search__button--magnifyingglass"></li>';
-        $(renderToprightNavUnorderedListItemSearchHtml).prependTo(".nav__right--ul");
+        $(renderToprightNavUnorderedListItemSearchHtml).prependTo(".nav__right--ul");      
 
         //render top right nav unordered list item magnifying glass link html
         var renderToprightNavUnorderedListItemMagnifyingGlassLinkHtml = '<a class="magnifyingglass__link" href="#"></a>';
@@ -238,8 +238,12 @@ var responsiveSlideOut = {
         $(renderTopLeftNavSearchBarContainerHtml).appendTo('#nav__responsive');
 
         //render top left nav search bar container sample search input container html
-        var renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml = '<div class="sample-search-input-container-may-delete"></div>';
+        var renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml = '<div class="sample-search-input-container-may-delete" style="padding: 5px 5px;"></div>';
         $(renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml).prependTo('.searchbar__container');
+        
+        //render top right nav unordered list item search html (FOR DEMO CAN DELETE)
+        var renderToprightNavUnorderedListItemSearchInputHtml = '<input class="search__input" placeholder="demo search input..." style="width: 100%;height: 40px;padding: 10px;font-size: 16px;color: #6b6b6b;border-radius: 3px;border: 1px solid #B8B8B8;box-sizing: border-box;">';
+        $(renderToprightNavUnorderedListItemSearchInputHtml).prependTo(".sample-search-input-container-may-delete");
 
         //render slideout panel     
         var renderSlideOutPanelHtml = '<div class="left-slide-out-panel slide-out-panel"></div>';
