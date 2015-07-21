@@ -264,3 +264,13 @@ once we hit 640px width do the following...*/
 
     /*end left slide-out menu panel styling*/
 }
+
+
+html > div > div.call-to-action-item > ul > li:nth-child(1) {
+    padding: 0;
+}
+html > div > div.call-to-action-item > ul > li:nth-child(1) > a {
+    display: block;
+    width: 89%;
+    padding: .8rem;
+}
