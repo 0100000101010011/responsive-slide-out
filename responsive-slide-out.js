@@ -4,10 +4,9 @@ origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigner
 ver: 1.0
 */
 
-"use strict";
-
 //ready
 $(document).ready(function(){
+    "use strict";
     responsiveSlideOut.renderResponsiveSlideOutInterface(); 
     responsiveSlideOut.styleResponsiveSlideOutInterface();      
     responsiveSlideOut.init();
@@ -17,9 +16,9 @@ $(document).ready(function(){
 var responsiveSlideOut = {
     init: function(){        
         if(window.innerWidth < 640){                     
-            responsiveSlideOut.triggerEvents();            
-            responsiveSlideOut.toggleFreezePageScroll();
-            responsiveSlideOut.toggleSearchField();
+            this.triggerEvents();            
+            this.toggleFreezePageScroll();
+            this.toggleSearchField();
         }
     },
     configs: {
@@ -116,12 +115,12 @@ var responsiveSlideOut = {
     freezePageScroll: function(){
         //freeze page scroll functionality
         $("html").css({"overflow":"hidden"});
-        return responsiveSlideOut.configs.freezePageScroll = true;
+        return this.configs.freezePageScroll = true;
     }, 
     unfreezePageScroll: function(){
         //unfreeze page scroll functionality
         $("html").css({"overflow":"auto"});
-        return responsiveSlideOut.configs.freezePageScroll = false;
+        return this.configs.freezePageScroll = false;
     }, 
     toggleSearchField: function(){        
         //when search button is clicked
@@ -264,9 +263,9 @@ var responsiveSlideOut = {
     styleResponsiveSlideOutInterface: function() {
 
         //call in awesome fonts
-        $(responsiveSlideOut.configs.awesomeFonts).insertAfter('head > meta:nth-child(3)');
+        $(this.configs.awesomeFonts).insertAfter('head > meta:nth-child(3)');
         //call in google fonts
-        $(responsiveSlideOut.configs.googleFonts).insertAfter('head > #awesome-fonts');
+        $(this.configs.googleFonts).insertAfter('head > #awesome-fonts');
 
         //global styling
         $('html').css({
