@@ -87,6 +87,15 @@ var responsiveSlideOut = {
             transition       : 'background .25s ease-in 0s', 
         });
 
+        $('.darken-page').on('click', function(){
+            //slide out the panel
+            responsiveSlideOut.toggleLeftSlideOutPanel();
+            //and freeze the page to prevent scrolling while slide out panel is active, this patches the 'jumping elements issue' due to address bar disappearing on mobile when scrolling
+            responsiveSlideOut.toggleFreezePageScroll();
+
+            //refactor this to be more abstract
+            $("#nav__responsive").toggleClass('nav__responsive--toggle');
+        });
 
     }, 
     removeDarkPageOverlay: function() {
@@ -100,6 +109,8 @@ var responsiveSlideOut = {
             OTransition      : 'background .25s ease-in 0s, visibility .25s ease-in',
             transition       : 'background .25s ease-in 0s, visibility .25s ease-in', 
         });
+        
+        $('.darken-page').off();
     }, 
     toggleFreezePageScroll: function(){
         //merge with triggerEvent method's code
@@ -241,7 +252,7 @@ var responsiveSlideOut = {
         //render top left nav search bar container sample search input container html
         var renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml = '<div class="sample-search-input-container-may-delete" style="padding: 5px 5px;"></div>';
         $(renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml).prependTo('.searchbar__container');
-        
+
         //render top right nav unordered list item search html (FOR DEMO CAN DELETE)
         var renderToprightNavUnorderedListItemSearchInputHtml = '<input class="search__input" placeholder="demo search input..." style="width: 100%;height: 40px;padding: 10px;font-size: 16px;color: #6b6b6b;border-radius: 3px;border: 1px solid #B8B8B8;box-sizing: border-box;outline: none;-webkit-box-shadow:inset 0 0 5px #000;-moz-box-shadow:inset 0 0 5px #000;box-shadow:inset 0 0 5px #000;background: transparent;">';
         $(renderToprightNavUnorderedListItemSearchInputHtml).prependTo(".sample-search-input-container-may-delete");
