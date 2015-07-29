@@ -1,5 +1,5 @@
 /*
-author: alvin sanchez
+author: alvin sanchez, atechapart.com
 origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigners.com
 ver: 1.0
 */
