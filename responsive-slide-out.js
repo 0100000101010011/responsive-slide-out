@@ -104,7 +104,6 @@ var responsiveSlideOut = {
             $("#nav__responsive").toggleClass('nav__responsive--toggle');
             $(".searchbar__container").toggleClass('nav__responsive--toggle');
         });
-
     }, 
     removeDarkPageOverlay: function() {
         //undarken the page
@@ -120,8 +119,7 @@ var responsiveSlideOut = {
 
         $('.darken-page').off();
         $('.darken-page').remove();
-        responsiveSlideOut.unfreezePageScroll();
-        
+        responsiveSlideOut.unfreezePageScroll();        
     }, 
     toggleFreezePageScroll: function(){
         //merge with triggerEvent method's code
@@ -287,7 +285,6 @@ var responsiveSlideOut = {
         $(this.configs.awesomeFonts).insertAfter('head > meta:nth-child(3)');
         //call in google fonts
         $(this.configs.googleFonts).insertAfter('head > #awesome-fonts');
-
 
         //global styling
         $('html').css({
