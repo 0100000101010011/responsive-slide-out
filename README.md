@@ -14,3 +14,5 @@ basic functionality ready to be customized and extended as needed
 setup to load html and css dynamically (self-contained, default) or manually add the html and css (split into separate files)
 
 documentation available @ https://github.com/atechapart/responsive-slide-out/wiki
+
+**feedback, requests, questions and/or contributions welcome
