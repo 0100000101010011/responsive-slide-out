@@ -119,7 +119,8 @@ var responsiveSlideOut = {
 
         $('.darken-page').off();
         $('.darken-page').remove();
-
+        responsiveSlideOut.unfreezePageScroll();
+        
     }, 
     toggleFreezePageScroll: function(){
         //merge with triggerEvent method's code
