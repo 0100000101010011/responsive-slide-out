@@ -5,9 +5,9 @@ to get started visit the wiki @ https://github.com/atechapart/responsive-slide-o
 
 features:
 
-designed for mobile
+designed for mobile (kicks in at 640px width)
 
-basic functionality ready to be extended
+basic functionality ready to be extended as needed
 
 setup to load everything dynamically (self-contained, default) or manually add the html and css (split into separate files)
 
