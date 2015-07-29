@@ -91,9 +91,8 @@ var responsiveSlideOut = {
             OTransition      : 'background .25s ease-in 0s',
             transition       : 'background .25s ease-in 0s', 
         });
-
-
-
+        
+        // when user clicks on the darken-page
         $('.darken-page').on('click', function(){
             //slide out the panel
             responsiveSlideOut.toggleLeftSlideOutPanel();
@@ -102,6 +101,7 @@ var responsiveSlideOut = {
 
             //refactor this to be more abstract
             $("#nav__responsive").toggleClass('nav__responsive--toggle');
+            $(".searchbar__container").toggleClass('nav__responsive--toggle');
         });
 
     }, 
@@ -119,6 +119,7 @@ var responsiveSlideOut = {
 
         $('.darken-page').off();
         $('.darken-page').remove();
+
     }, 
     toggleFreezePageScroll: function(){
         //merge with triggerEvent method's code
