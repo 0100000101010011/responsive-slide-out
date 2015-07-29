@@ -1,7 +1,7 @@
 /*
 author: alvin sanchez, atechapart.com
 origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigners.com
-ver: 1.0
+ver: 1.1
 */
 
 //ready
@@ -15,7 +15,7 @@ $(document).ready(function(){
 //build responsive slide out
 var responsiveSlideOut = {
     init: function(){        
-        this.triggerEvents(); 
+        this.triggerEvents(); //change to slideOutTrigger
         this.toggleSearchField();
         this.toggleFreezePageScroll();
     },
