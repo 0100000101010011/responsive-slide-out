@@ -1,4 +1,7 @@
-# responsive-slide-out `v1.1`
+# responsive-slide-out 
+
+`v1.1`
+
 an user-friendly responsive navigation bar with a smooth left-side slide out navigation panel 
 
 view the demo @ https://albino-amazon.codio.io/demo.html
