@@ -48,6 +48,7 @@ var responsiveSlideOut = {
         html.toggleClass('left-slide-out-panel-open');
         //test toggle status (optional check to create events based on toggleClass state)
         if($('html').hasClass('left-slide-out-panel-open')){
+            responsiveSlideOut.hideSearchFieldContainer();
             //render dark overlay
             responsiveSlideOut.renderDarkPageOverlay();
             //toggle hamburger button color for open and close states
