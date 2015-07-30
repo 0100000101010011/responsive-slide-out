@@ -22,9 +22,9 @@ var responsiveSlideout = {
         //when the hamburger button is clicked
         $('.slideout__button--hamburger').on('click',function(){
             //slide out the panel
-            responsiveSlideout.toggleLeftSlideOutPanel();
-            responsiveSlideout.toggleTopNavBarSlideRight();
-        });
+            this.toggleLeftSlideOutPanel();
+            this.toggleTopNavBarSlideRight();
+        }.bind(this));
     }, 
     toggleTopNavBarSlideRight: function(){
         //show top nav bar
@@ -37,14 +37,14 @@ var responsiveSlideout = {
         html.toggleClass('left-slide-out-panel-open');
 
         if($('html').hasClass('left-slide-out-panel-open')){
-            responsiveSlideout.hideSearchFieldContainer();
-            responsiveSlideout.renderDarkPageOverlay(); 
-            responsiveSlideout.freezePageScroll(); 
-            responsiveSlideout.changeHamburgerButtonColor();
+            this.hideSearchFieldContainer();
+            this.renderDarkPageOverlay(); 
+            this.freezePageScroll(); 
+            this.changeHamburgerButtonColor();
         } else {
-            responsiveSlideout.removeDarkPageOverlay();
-            responsiveSlideout.unfreezePageScroll();
-            responsiveSlideout.restoreHamburgerButtonColor();
+            this.removeDarkPageOverlay();
+            this.unfreezePageScroll();
+            this.restoreHamburgerButtonColor();
         }
     }, 
     changeHamburgerButtonColor: function() {
@@ -89,10 +89,10 @@ var responsiveSlideout = {
         // when user clicks on the darken-page element
         $('.darken-page').on('click', function(){
             //hide top nav bar
-            responsiveSlideout.toggleTopNavBarSlideRight();
+            this.toggleTopNavBarSlideRight();
             //hide the slide out panel
-            responsiveSlideout.toggleLeftSlideOutPanel();            
-        });
+            this.toggleLeftSlideOutPanel();            
+        }.bind(this));
     }, 
     removeDarkPageOverlay: function() {
         //undarken the page
@@ -126,11 +126,11 @@ var responsiveSlideout = {
         $('.search__button--magnifyingglass').on('click', function(e){
             e.preventDefault();
             if($(".searchbar__container").hasClass('searchbar-container-open')) {
-                responsiveSlideout.hideSearchFieldContainer();
+                this.hideSearchFieldContainer();
             } else {
-                responsiveSlideout.showSearchFieldContainer();
+                this.showSearchFieldContainer();
             }
-        });
+        }.bind(this));
     }, 
     showSearchFieldContainer: function(){
         $(".searchbar__container").css({display: "block"});
