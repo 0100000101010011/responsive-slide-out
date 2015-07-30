@@ -164,6 +164,7 @@ var responsiveSlideout = {
     }, 
 
 }
+//end build responsive slideout
 
 //render html interface
 var renderResponsiveSlideoutInterfaceHtml = {
@@ -298,6 +299,7 @@ var renderResponsiveSlideoutInterfaceHtml = {
 
     }    
 };
+//end render html interface
 
 //style css interface
 var styleResponsiveSlideoutInterfaceCss = {   
@@ -338,3 +340,4 @@ var styleResponsiveSlideoutInterfaceCss = {
     }
 
 };
+//end style css interface
