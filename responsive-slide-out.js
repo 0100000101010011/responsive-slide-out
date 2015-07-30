@@ -7,33 +7,30 @@ ver: 1.1
 //ready
 $(document).ready(function(){
     "use strict";
-    responsiveSlideOut.renderResponsiveSlideOutInterface(); 
-    responsiveSlideOut.styleResponsiveSlideOutInterface();      
-    responsiveSlideOut.init();
+    renderResponsiveSlideoutInterfaceHtml.init(); 
+    styleResponsiveSlideoutInterfaceCss.init();
+    responsiveSlideout.init();
 });
 
-//build responsive slide out
-var responsiveSlideOut = {
+//build responsive slideout
+var responsiveSlideout = {
     init: function(){        
-        this.triggerEvents(); //change to slideOutTrigger
+        this.toggleSlideout();
         this.toggleSearchField();
         this.toggleFreezePageScroll();
     },
     configs: {
-        googleFonts: '<link id="google-fonts" href="//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">', 
-        awesomeFonts: '<link id="awesome-fonts" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">', 
-        logoUrl: 'http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png', 
         //configure overflow: hidden; to toggle dynamically on <html> element: 
         //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
         freezePageScroll: false
     }, 
-    triggerEvents: function() {
+    toggleSlideout: function() {
         //when the hamburger button is clicked
         $('.slideout__button--hamburger').on('click',function(){
             //slide out the panel
-            responsiveSlideOut.toggleLeftSlideOutPanel();
+            responsiveSlideout.toggleLeftSlideOutPanel();
             //and freeze the page to prevent scrolling while slide out panel is active, this patches the 'jumping elements issue' due to address bar disappearing on mobile when scrolling
-            responsiveSlideOut.toggleFreezePageScroll();
+            responsiveSlideout.toggleFreezePageScroll();
 
             //refactor this to be more abstract
             $("#nav__responsive").toggleClass('nav__responsive--toggle');
@@ -46,9 +43,9 @@ var responsiveSlideOut = {
         html.toggleClass('left-slide-out-panel-open');
         //test toggle status (optional check to create events based on toggleClass state)
         if($('html').hasClass('left-slide-out-panel-open')){
-            responsiveSlideOut.hideSearchFieldContainer();
+            responsiveSlideout.hideSearchFieldContainer();
             //render dark overlay
-            responsiveSlideOut.renderDarkPageOverlay();
+            responsiveSlideout.renderDarkPageOverlay();
             //toggle hamburger button color for open and close states
             $('.slideout__button--hamburger').css({
                 background: '#a91e23', 
@@ -62,7 +59,7 @@ var responsiveSlideOut = {
             return true;
         } else {
             //remove dark page overlay
-            responsiveSlideOut.removeDarkPageOverlay();
+            responsiveSlideout.removeDarkPageOverlay();
             //toggle hamburger button color for open and close states
             $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
             return false;
@@ -90,13 +87,13 @@ var responsiveSlideOut = {
             OTransition      : 'background .25s ease-in 0s',
             transition       : 'background .25s ease-in 0s', 
         });
-        
+
         // when user clicks on the darken-page element
         $('.darken-page').on('click', function(){
             //hide the slide out panel
-            responsiveSlideOut.toggleLeftSlideOutPanel();
+            responsiveSlideout.toggleLeftSlideOutPanel();
             //and unfreeze the page
-            responsiveSlideOut.toggleFreezePageScroll();
+            responsiveSlideout.toggleFreezePageScroll();
 
             //refactor this to be more abstract
             $("#nav__responsive").toggleClass('nav__responsive--toggle');
@@ -120,18 +117,18 @@ var responsiveSlideOut = {
         //remove the darken-page element
         $('.darken-page').remove();
         //re-enable page scrolling
-        responsiveSlideOut.unfreezePageScroll();        
+        responsiveSlideout.unfreezePageScroll();        
     }, 
     toggleFreezePageScroll: function(){
         //merge with triggerEvent method's code
         $('.slideout__button--hamburger').on('click',function(){            
-            if (responsiveSlideOut.configs.freezePageScroll === false) {  
-                responsiveSlideOut.freezePageScroll(); 
+            if (responsiveSlideout.configs.freezePageScroll === false) {  
+                responsiveSlideout.freezePageScroll(); 
             } else {                 
-                responsiveSlideOut.unfreezePageScroll();
+                responsiveSlideout.unfreezePageScroll();
             }            
         });
-        responsiveSlideOut.configs.freezePageScroll = false;
+        responsiveSlideout.configs.freezePageScroll = false;
     }, 
     freezePageScroll: function(){
         //freeze page scroll functionality
@@ -149,9 +146,9 @@ var responsiveSlideOut = {
         $('.search__button--magnifyingglass').on('click', function(e){
             e.preventDefault();
             if($(".searchbar__container").hasClass('show')) {
-                responsiveSlideOut.hideSearchFieldContainer();
+                responsiveSlideout.hideSearchFieldContainer();
             } else {
-                responsiveSlideOut.showSearchFieldContainer();
+                responsiveSlideout.showSearchFieldContainer();
             }
         });
     }, 
@@ -164,8 +161,28 @@ var responsiveSlideOut = {
         $(".searchbar__container").removeClass('show');
         $(".search__button--magnifyingglass").css({"background":"#2B2B2B"});
         $(".search__button--magnifyingglass > a").css({"color":"#fff"});
-    },
-    renderResponsiveSlideOutInterface: function(){ 
+    }, 
+
+}
+
+//render html interface
+var renderResponsiveSlideoutInterfaceHtml = {
+    init: function() {      
+        this.callInExternalLibraries();
+        this.renderResponsiveSlideOutInterfaceHtml();
+    }, 
+    configs: {
+        googleFonts: '<link id="google-fonts" href="//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">', 
+        awesomeFonts: '<link id="awesome-fonts" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">', 
+        logoUrl: 'http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png'
+    }, 
+    callInExternalLibraries: function(){
+        //call in awesome fonts
+        $(this.configs.awesomeFonts).insertAfter('head > meta:nth-child(3)');
+        //call in google fonts
+        $(this.configs.googleFonts).insertAfter('head > #awesome-fonts');
+    }, 
+    renderResponsiveSlideOutInterfaceHtml: function(){ 
 
         //render slide out nav container
         var renderSlideOutNavContainer = '<div id="slide-out-nav-container"></div>';
@@ -208,7 +225,7 @@ var responsiveSlideOut = {
         $(renderTopLeftNavUnorderedListItemLogoLinkHtml).appendTo('.slideout__logo');
 
         //render top left nav unordered list item logo link image html
-        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + responsiveSlideOut.configs.logoUrl + '">';
+        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + renderResponsiveSlideoutInterfaceHtml.configs.logoUrl + '">';
         $(renderTopLeftNavUnorderedListItemLogoLinkImageHtml).appendTo('.logo__link');
 
         //render top right nav html
@@ -279,13 +296,15 @@ var responsiveSlideOut = {
         var renderBodyContentBlockHtml = '<div class="body-content-item" style="height:100%;overflow-y:scroll;font-size:60px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit tincidunt dui sit amet finibus. Vestibulum tristique ullamcorper elit sit amet ornare. Fusce at velit in turpis porta molestie. Pellentesque quis nibh ut tellus mattis blandit vitae ac nunc. Phasellus luctus nibh vel efficitur faucibus. Aenean rutrum lorem erat, at porttitor est scelerisque at. Mauris nec dolor nec risus feugiat auctor. Maecenas pretium et nisl eu ultricies. Curabitur consectetur lorem ut dolor volutpat, ac ornare mi lobortis. Nunc nec feugiat sapien. Sed consequat, erat sed facilisis finibus, massa neque semper ante, vitae aliquam eros augue quis elit. Proin vitae facilisis dolor.</div>';
         $('.slide-out-panel').append(renderBodyContentBlockHtml);
 
-    },
-    styleResponsiveSlideOutInterface: function() {
+    }    
+};
 
-        //call in awesome fonts
-        $(this.configs.awesomeFonts).insertAfter('head > meta:nth-child(3)');
-        //call in google fonts
-        $(this.configs.googleFonts).insertAfter('head > #awesome-fonts');
+//style css interface
+var styleResponsiveSlideoutInterfaceCss = {   
+    init: function(){
+        this.styleResponsiveSlideOutInterface();
+    }, 
+    styleResponsiveSlideOutInterface: function() {
 
         //global styling
         $('html').css({
@@ -316,5 +335,6 @@ var responsiveSlideOut = {
         $(stylesTag).appendTo('head');
         //put the css inside the new <style> element
         $('style').text(css);
-    }, 
-}
+    }
+
+};
