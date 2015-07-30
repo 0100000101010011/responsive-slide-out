@@ -1,7 +1,7 @@
 /*
 author: alvin sanchez, atechapart.com
 origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigners.com
-ver: 1.2
+ver: 1.3
 */
 
 //ready
@@ -17,53 +17,51 @@ var responsiveSlideout = {
     init: function(){        
         this.toggleSlideout();
         this.toggleSearchField();
-        this.toggleFreezePageScroll();
     },
-    configs: {
-        //configure overflow: hidden; to toggle dynamically on <html> element: 
-        //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
-        freezePageScroll: false
-    }, 
     toggleSlideout: function() {
         //when the hamburger button is clicked
         $('.slideout__button--hamburger').on('click',function(){
             //slide out the panel
             responsiveSlideout.toggleLeftSlideOutPanel();
-            //and freeze the page to prevent scrolling while slide out panel is active, this patches the 'jumping elements issue' due to address bar disappearing on mobile when scrolling
-            responsiveSlideout.toggleFreezePageScroll();
-
-            //refactor this to be more abstract
-            $("#nav__responsive").toggleClass('nav__responsive--toggle');
-            $(".searchbar__container").toggleClass('nav__responsive--toggle');
+            responsiveSlideout.toggleTopNavBarSlideRight();
         });
     }, 
+    toggleTopNavBarSlideRight: function(){
+        //show top nav bar
+        $("#nav__responsive").toggleClass('nav__responsive--toggle');
+        $(".searchbar__container").toggleClass('nav__responsive--toggle');
+    }, 
     toggleLeftSlideOutPanel: function(){
-        //toggle show/hide left slideout panel
+
         var html = $('html');
         html.toggleClass('left-slide-out-panel-open');
-        //test toggle status (optional check to create events based on toggleClass state)
+
         if($('html').hasClass('left-slide-out-panel-open')){
             responsiveSlideout.hideSearchFieldContainer();
-            //render dark overlay
-            responsiveSlideout.renderDarkPageOverlay();
-            //toggle hamburger button color for open and close states
-            $('.slideout__button--hamburger').css({
-                background: '#a91e23', 
-                "border-right": '1px solid #a91e23', 
-                WebkitTransition : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-                MozTransition    : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-                MsTransition     : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-                OTransition      : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-                transition       : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-            });
-            return true;
+            responsiveSlideout.renderDarkPageOverlay(); 
+            responsiveSlideout.freezePageScroll(); 
+            responsiveSlideout.changeHamburgerButtonColor();
         } else {
-            //remove dark page overlay
             responsiveSlideout.removeDarkPageOverlay();
-            //toggle hamburger button color for open and close states
-            $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
-            return false;
+            responsiveSlideout.unfreezePageScroll();
+            responsiveSlideout.restoreHamburgerButtonColor();
         }
+    }, 
+    changeHamburgerButtonColor: function() {
+        //change hamburger button color for open to red
+        $('.slideout__button--hamburger').css({
+            background: '#a91e23', 
+            "border-right": '1px solid #a91e23', 
+            WebkitTransition : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+            MozTransition    : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+            MsTransition     : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+            OTransition      : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+            transition       : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
+        });
+    }, 
+    restoreHamburgerButtonColor: function() {
+        //change hamburger button color for close back to default (charcoal) color
+        $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
     }, 
     renderDarkPageOverlay: function() {
 
@@ -90,14 +88,10 @@ var responsiveSlideout = {
 
         // when user clicks on the darken-page element
         $('.darken-page').on('click', function(){
+            //hide top nav bar
+            responsiveSlideout.toggleTopNavBarSlideRight();
             //hide the slide out panel
-            responsiveSlideout.toggleLeftSlideOutPanel();
-            //and unfreeze the page
-            responsiveSlideout.toggleFreezePageScroll();
-
-            //refactor this to be more abstract
-            $("#nav__responsive").toggleClass('nav__responsive--toggle');
-            $(".searchbar__container").toggleClass('nav__responsive--toggle');
+            responsiveSlideout.toggleLeftSlideOutPanel();            
         });
     }, 
     removeDarkPageOverlay: function() {
@@ -116,29 +110,17 @@ var responsiveSlideout = {
         $('.darken-page').off();
         //remove the darken-page element
         $('.darken-page').remove();
-        //re-enable page scrolling
-        responsiveSlideout.unfreezePageScroll();        
-    }, 
-    toggleFreezePageScroll: function(){
-        //merge with triggerEvent method's code
-        $('.slideout__button--hamburger').on('click',function(){            
-            if (responsiveSlideout.configs.freezePageScroll === false) {  
-                responsiveSlideout.freezePageScroll(); 
-            } else {                 
-                responsiveSlideout.unfreezePageScroll();
-            }            
-        });
-        responsiveSlideout.configs.freezePageScroll = false;
+
     }, 
     freezePageScroll: function(){
         //freeze page scroll functionality
+        //configure overflow: hidden; to toggle dynamically on <html> element: 
+        //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
         $("html").css({"overflow":"hidden"});
-        return this.configs.freezePageScroll = true;
     }, 
     unfreezePageScroll: function(){
         //unfreeze page scroll functionality
         $("html").css({"overflow":"auto"});
-        return this.configs.freezePageScroll = false;
     }, 
     toggleSearchField: function(){        
         //when search button is clicked
