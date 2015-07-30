@@ -32,7 +32,6 @@ var responsiveSlideout = {
         $(".searchbar__container").toggleClass('nav__responsive--toggle');
     }, 
     toggleLeftSlideOutPanel: function(){
-
         var html = $('html');
         html.toggleClass('left-slide-out-panel-open');
 
@@ -64,7 +63,6 @@ var responsiveSlideout = {
         $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
     }, 
     renderDarkPageOverlay: function() {
-
         //render the darken-page element onto the page
         var renderDarkPageOverlay = '<div class="darken-page"></div>';
         $('body').prepend(renderDarkPageOverlay);
@@ -110,7 +108,6 @@ var responsiveSlideout = {
         $('.darken-page').off();
         //remove the darken-page element
         $('.darken-page').remove();
-
     }, 
     freezePageScroll: function(){
         //freeze page scroll functionality
@@ -144,7 +141,6 @@ var responsiveSlideout = {
         $(".search__button--magnifyingglass").css({"background":"#2B2B2B"});
         $(".search__button--magnifyingglass > a").css({"color":"#fff"});
     }, 
-
 }
 //end build responsive slideout
 
@@ -156,24 +152,32 @@ var renderCoreResponsiveSlideOutInterfaceHtml = {
         this.renderCustomResponsiveSlideOutInterfaceHtml();
     }, 
     configs: {
-        googleFonts: '<link id="google-fonts" href="//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">', 
-        awesomeFonts: '<link id="awesome-fonts" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">', 
-        logoUrl: 'http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png'
+        callInGoogleFonts: '<link id="google-fonts" href="//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">', 
+        callInAwesomeFonts: '<link id="awesome-fonts" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">', 
+        fetchLogoFromUrl: 'http://www.summa3d.com/wp/wp-content/uploads/2014/12/logo_placeholder.png'
     }, 
     callInExternalLibraries: function(){
-        //call in awesome fonts
-        $(this.configs.awesomeFonts).insertAfter('head > meta:nth-child(3)');
+        $(this.configs.callInAwesomeFonts).insertAfter('head > meta:nth-child(3)');
         //call in google fonts
-        $(this.configs.googleFonts).insertAfter('head > #awesome-fonts');
+        $(this.configs.callInGoogleFonts).insertAfter('head > #awesome-fonts');
     }, 
     renderCustomResponsiveSlideOutInterfaceHtml: function(){
-        //your custom html elements
+        //add your custom html elements here...
+
+        //here's a demo custom snippet to render the search input field html (FOR DEMO CAN DELETE)
+        var renderToprightNavUnorderedListItemSearchInputHtml = '<input class="search__input" placeholder="demo search input..." style="width: 100%;height: 40px;padding: 10px;font-size: 16px;color: #6b6b6b;border-radius: 3px;border: 1px solid #B8B8B8;box-sizing: border-box;outline: none;-webkit-box-shadow:inset 0 0 5px #000;-moz-box-shadow:inset 0 0 5px #000;box-shadow:inset 0 0 5px #000;background: transparent;">';
+        $(renderToprightNavUnorderedListItemSearchInputHtml).prependTo(".sample-search-input-container-may-delete");
+
+        //and another demo custom snippet to render the slide out body content with the scroll
+        var renderBodyContentBlockHtml = '<div class="body-content-item" style="height:100%;overflow-y:scroll;font-size:60px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit tincidunt dui sit amet finibus. Vestibulum tristique ullamcorper elit sit amet ornare. Fusce at velit in turpis porta molestie. Pellentesque quis nibh ut tellus mattis blandit vitae ac nunc. Phasellus luctus nibh vel efficitur faucibus. Aenean rutrum lorem erat, at porttitor est scelerisque at. Mauris nec dolor nec risus feugiat auctor. Maecenas pretium et nisl eu ultricies. Curabitur consectetur lorem ut dolor volutpat, ac ornare mi lobortis. Nunc nec feugiat sapien. Sed consequat, erat sed facilisis finibus, massa neque semper ante, vitae aliquam eros augue quis elit. Proin vitae facilisis dolor.</div>';
+        $('.slide-out-panel').append(renderBodyContentBlockHtml);
     }, 
     renderCoreResponsiveSlideOutInterfaceHtml: function(){ 
 
         //render slide out nav container
         var renderSlideOutNavContainer = '<div id="slide-out-nav-container"></div>';
         $(renderSlideOutNavContainer).prependTo('body');
+
         //render top nav container html
         //here, latch onto the element to render the slide out components/elements into, here im rendering the slide out inside the <header>
         var renderTopNavContainerHtml = '<section id="top-nav"></section>';
@@ -212,7 +216,7 @@ var renderCoreResponsiveSlideOutInterfaceHtml = {
         $(renderTopLeftNavUnorderedListItemLogoLinkHtml).appendTo('.slideout__logo');
 
         //render top left nav unordered list item logo link image html
-        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + renderCoreResponsiveSlideOutInterfaceHtml.configs.logoUrl + '">';
+        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + renderCoreResponsiveSlideOutInterfaceHtml.configs.fetchLogoFromUrl + '">';
         $(renderTopLeftNavUnorderedListItemLogoLinkImageHtml).appendTo('.logo__link');
 
         //render top right nav html
@@ -267,10 +271,6 @@ var renderCoreResponsiveSlideOutInterfaceHtml = {
         var renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml = '<div class="sample-search-input-container-may-delete" style="padding: 5px 5px;"></div>';
         $(renderTopLeftNavSearchBarContainerSampleSearchInputContainerHtml).prependTo('.searchbar__container');
 
-        //render top right nav unordered list item search html (FOR DEMO CAN DELETE)
-        var renderToprightNavUnorderedListItemSearchInputHtml = '<input class="search__input" placeholder="demo search input..." style="width: 100%;height: 40px;padding: 10px;font-size: 16px;color: #6b6b6b;border-radius: 3px;border: 1px solid #B8B8B8;box-sizing: border-box;outline: none;-webkit-box-shadow:inset 0 0 5px #000;-moz-box-shadow:inset 0 0 5px #000;box-shadow:inset 0 0 5px #000;background: transparent;">';
-        $(renderToprightNavUnorderedListItemSearchInputHtml).prependTo(".sample-search-input-container-may-delete");
-
         //render slideout panel     
         var renderSlideOutPanelHtml = '<div class="left-slide-out-panel slide-out-panel"></div>';
         $('html').append(renderSlideOutPanelHtml);
@@ -279,10 +279,6 @@ var renderCoreResponsiveSlideOutInterfaceHtml = {
         //the dir="ltr" used in the anchor tag is used to fix bug where the phone number text with hyphens renders out of order
         var renderHeadContentBlockHtml = '<div class="call-to-action-item"><ul><li><a href="tel:+1-866-555-5555" dir="ltr"><i class="fa fa-phone"></i>866-5-NUMBER<small>(866-555-5555)</small></a></li><li>call to action/selling point</li></ul></div>';
         $('.slide-out-panel').prepend(renderHeadContentBlockHtml);
-
-        var renderBodyContentBlockHtml = '<div class="body-content-item" style="height:100%;overflow-y:scroll;font-size:60px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit tincidunt dui sit amet finibus. Vestibulum tristique ullamcorper elit sit amet ornare. Fusce at velit in turpis porta molestie. Pellentesque quis nibh ut tellus mattis blandit vitae ac nunc. Phasellus luctus nibh vel efficitur faucibus. Aenean rutrum lorem erat, at porttitor est scelerisque at. Mauris nec dolor nec risus feugiat auctor. Maecenas pretium et nisl eu ultricies. Curabitur consectetur lorem ut dolor volutpat, ac ornare mi lobortis. Nunc nec feugiat sapien. Sed consequat, erat sed facilisis finibus, massa neque semper ante, vitae aliquam eros augue quis elit. Proin vitae facilisis dolor.</div>';
-        $('.slide-out-panel').append(renderBodyContentBlockHtml);
-
     }    
 };
 //end render html interface
@@ -294,7 +290,7 @@ var styleCoreResponsiveSlideOutInterfaceCss = {
         this.styleCustomResponsiveSlideOutInterface();
     }, 
     styleCustomResponsiveSlideOutInterface: function(){
-        //your custom css styles
+        //add your custom css styles here...
     }, 
     styleCoreResponsiveSlideOutInterface: function() {
 
