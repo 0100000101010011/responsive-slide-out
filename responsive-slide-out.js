@@ -1,14 +1,14 @@
 /*
 author: alvin sanchez, atechapart.com
 origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigners.com
-ver: 1.4
+ver: 1.5
 */
 
 //ready
 $(document).ready(function(){
     "use strict";
-    renderResponsiveSlideoutInterfaceHtml.init(); 
-    styleResponsiveSlideoutInterfaceCss.init();
+    renderCoreResponsiveSlideOutInterfaceHtml.init(); 
+    styleCoreResponsiveSlideOutInterfaceCss.init();
     responsiveSlideout.init();
 });
 
@@ -149,10 +149,11 @@ var responsiveSlideout = {
 //end build responsive slideout
 
 //render html interface
-var renderResponsiveSlideoutInterfaceHtml = {
+var renderCoreResponsiveSlideOutInterfaceHtml = {
     init: function() {      
         this.callInExternalLibraries();
-        this.renderResponsiveSlideOutInterfaceHtml();
+        this.renderCoreResponsiveSlideOutInterfaceHtml();
+        this.renderCustomResponsiveSlideOutInterfaceHtml();
     }, 
     configs: {
         googleFonts: '<link id="google-fonts" href="//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">', 
@@ -165,7 +166,10 @@ var renderResponsiveSlideoutInterfaceHtml = {
         //call in google fonts
         $(this.configs.googleFonts).insertAfter('head > #awesome-fonts');
     }, 
-    renderResponsiveSlideOutInterfaceHtml: function(){ 
+    renderCustomResponsiveSlideOutInterfaceHtml: function(){
+        //your custom html elements
+    }, 
+    renderCoreResponsiveSlideOutInterfaceHtml: function(){ 
 
         //render slide out nav container
         var renderSlideOutNavContainer = '<div id="slide-out-nav-container"></div>';
@@ -208,7 +212,7 @@ var renderResponsiveSlideoutInterfaceHtml = {
         $(renderTopLeftNavUnorderedListItemLogoLinkHtml).appendTo('.slideout__logo');
 
         //render top left nav unordered list item logo link image html
-        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + renderResponsiveSlideoutInterfaceHtml.configs.logoUrl + '">';
+        var renderTopLeftNavUnorderedListItemLogoLinkImageHtml = '<img class="logo__link--img" src="' + renderCoreResponsiveSlideOutInterfaceHtml.configs.logoUrl + '">';
         $(renderTopLeftNavUnorderedListItemLogoLinkImageHtml).appendTo('.logo__link');
 
         //render top right nav html
@@ -284,11 +288,15 @@ var renderResponsiveSlideoutInterfaceHtml = {
 //end render html interface
 
 //style css interface
-var styleResponsiveSlideoutInterfaceCss = {   
+var styleCoreResponsiveSlideOutInterfaceCss = {   
     init: function(){
-        this.styleResponsiveSlideOutInterface();
+        this.styleCoreResponsiveSlideOutInterface();
+        this.styleCustomResponsiveSlideOutInterface();
     }, 
-    styleResponsiveSlideOutInterface: function() {
+    styleCustomResponsiveSlideOutInterface: function(){
+        //your custom css styles
+    }, 
+    styleCoreResponsiveSlideOutInterface: function() {
 
         //global styling
         $('html').css({

@@ -1,6 +1,6 @@
 # responsive-slide-out 
 
-`v1.4`
+`v1.5`
 
 an user-friendly responsive navigation bar with a smooth left-side slide out navigation panel 
 
