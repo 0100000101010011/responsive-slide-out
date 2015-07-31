@@ -21,9 +21,9 @@ var responsiveSlideout = {
     toggleSlideout: function() {
         //when the hamburger button is clicked
         $('.slideout__button--hamburger').on('click',function(){
-            //slide out the panel
-            this.toggleLeftSlideOutPanel();
             this.toggleTopNavBarSlideRight();
+            //slide out the panel
+            this.toggleLeftSlideOutPanel();       
         }.bind(this));
     }, 
     toggleTopNavBarSlideRight: function(){
@@ -36,13 +36,13 @@ var responsiveSlideout = {
         html.toggleClass('left-slide-out-panel-open');
 
         if($('html').hasClass('left-slide-out-panel-open')){
+            this.lockPageScroll();
             this.hideSearchFieldContainer();
             this.renderDarkPageOverlay(); 
-            this.freezePageScroll(); 
             this.changeHamburgerButtonColor();
         } else {
+            this.unlockPageScroll();
             this.removeDarkPageOverlay();
-            this.unfreezePageScroll();
             this.restoreHamburgerButtonColor();
         }
     }, 
@@ -62,11 +62,27 @@ var responsiveSlideout = {
         //change hamburger button color for close back to default (charcoal) color
         $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
     }, 
-    renderDarkPageOverlay: function() {
+    lockPageScroll: function() {
+        //http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
+        //configure overflow: hidden; to toggle dynamically on <html> element: 
+        //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
+        var top = $(window).scrollTop();
+        var left = $(window).scrollLeft();
+
+        $('html').css('overflow', 'hidden');
+        $(window).scroll(function(){
+            $(this).scrollTop(top).scrollLeft(left);
+        });
+    }, 
+    unlockPageScroll: function() {
+        //http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
+        $('html').css('overflow', 'auto');
+//         $(this).unbind('scroll'); //this is not working right, fix
+    }, 
+    renderDarkPageOverlay: function() {        
         //render the darken-page element onto the page
         var renderDarkPageOverlay = '<div class="darken-page"></div>';
         $('body').prepend(renderDarkPageOverlay);
-
         //cover and darken the page
         $('.darken-page').css({
             background : 'rgba(0, 0, 0, .5)', 
@@ -83,16 +99,16 @@ var responsiveSlideout = {
             OTransition      : 'background .25s ease-in 0s',
             transition       : 'background .25s ease-in 0s', 
         });
-
         // when user clicks on the darken-page element
         $('.darken-page').on('click', function(){
+            $(window).unbind('scroll');
             //hide top nav bar
             this.toggleTopNavBarSlideRight();
             //hide the slide out panel
-            this.toggleLeftSlideOutPanel();            
+            this.toggleLeftSlideOutPanel();    
         }.bind(this));
     }, 
-    removeDarkPageOverlay: function() {
+    removeDarkPageOverlay: function() {        
         //undarken the page
         $('.darken-page').css({
             visibility: 'hidden', 
@@ -103,21 +119,10 @@ var responsiveSlideout = {
             OTransition      : 'background .25s ease-in 0s, visibility .25s ease-in',
             transition       : 'background .25s ease-in 0s, visibility .25s ease-in', 
         });
-
         //disable the click event on the darken-page
         $('.darken-page').off();
         //remove the darken-page element
         $('.darken-page').remove();
-    }, 
-    freezePageScroll: function(){
-        //freeze page scroll functionality
-        //configure overflow: hidden; to toggle dynamically on <html> element: 
-        //bug fix for {https://teamtreehouse.com/forum/position-fixed-css-bug-in-chrome-and-firefox-for-android}
-        $("html").css({"overflow":"hidden"});
-    }, 
-    unfreezePageScroll: function(){
-        //unfreeze page scroll functionality
-        $("html").css({"overflow":"auto"});
     }, 
     toggleSearchField: function(){        
         $('.search__button--magnifyingglass').on('click', function(e){
@@ -316,7 +321,7 @@ var styleCoreResponsiveSlideOutInterfaceCss = {
         //css unminify with: http://mrcoles.com/blog/css-unminify/
         //cache the css
         var css = 
-            "body:after,main{width:100%}html{height:100%;background:grey}body{position:relative;top:0;min-height:100%}body:after{content:'';display:block;height:100%;color:rgba(0,0,0,.6)}#nav__responsive{display:none}@media screen and (max-width:640px){body{top:50px!important}#nav__responsive{display:inline-block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:50px;background:#2B2B2B;-webkit-transition:all .3s ease;transition:all .3s ease}#nav__responsive .nav__left{float:left;height:100%;width:170px}#nav__responsive .nav__left ul{height:100%;margin:0;padding:0}#nav__responsive .nav__left ul li{float:right;height:100%;text-align:left;list-style-type:none;background:#2B2B2B;width:119px}#nav__responsive .nav__left ul li:first-child{float:left;width:50px;text-align:center;background:#2B2B2B;border-right:1px solid #515151}#nav__responsive .nav__left ul li:first-child a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__left ul li:first-child a i{position:absolute;left:15px;top:15px}#nav__responsive .nav__left ul li:last-child a{position:static;display:inline-block;height:100%}#nav__responsive .nav__left ul li:last-child a img{display:block;max-width:92%;max-height:92%;padding:4%;position:relative;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}#nav__responsive .nav__right{float:right;width:calc(100% - 170px);height:50px;background:#2B2B2B;overflow:hidden}#nav__responsive .nav__right ul{float:right;width:150px;height:100%;margin:0;padding:0}#nav__responsive .nav__right ul li{display:inline-block;float:left;width:49px;height:100%;border-left:1px solid #515151}#nav__responsive .nav__right ul li a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__right ul li a i{position:relative;left:15px;top:15px}.nav__responsive--toggle{left:265px!important;-webkit-transition:all .3s ease;transition:all .3s ease}.slide-out-panel{height:100%;min-height:100%;width:265px;background:#2B2B2B;top:0;overflow:hidden;transition:all .3s ease;z-index:1001}.searchbar__container,.slide-out-panel{position:fixed;-webkit-transition:all .3s ease}.left-slide-out-panel{left:-265px;padding:15px}html.left-slide-out-panel-open .left-slide-out-panel{left:0}.searchbar__container{display:none;top:50px;left:0;z-index:9999;width:100%;height:50px;background:#fff;transition:all .3s ease}.slide-out-panel{padding:0;font-family:Lato,Arial,Sans-serif}.slide-out-panel .call-to-action-item{background:#005C18}.slide-out-panel .call-to-action-item ul{margin:0;padding:0}.slide-out-panel .call-to-action-item ul li{font-size:1rem;text-align:left}.slide-out-panel .call-to-action-item ul li a i{float:left;padding: 0 10px 0 0;font-size:1.5rem;color:#fff}.slide-out-panel .call-to-action-item ul li a{display:block;width:240px;padding:.96rem;font-weight:700;text-decoration:none;color:#fff}.slide-out-panel .call-to-action-item ul li small{float:right;padding:.3rem 0 0;font-size:.7rem;font-weight:700;color:#81AE8C}.slide-out-panel .call-to-action-item ul li:last-child{padding:.4rem;font-size:1rem;font-weight:700;font-style:italic;text-align:center;color:#a91e23;background:#fff}.slide-out-panel .page-menu-container>ul>li{display:inline-block;width:100%;text-align:left;background:#2B2B2B;border-bottom:1px solid #515151}.slide-out-panel .page-menu-container>ul>li a{font-weight:400;color:#fff}}.body-content-item{scrollbar-face-color: #367CD2;scrollbar-shadow-color: #FFFFFF;scrollbar-highlight-color: #FFFFFF;scrollbar-3dlight-color: #FFFFFF;scrollbar-darkshadow-color: #FFFFFF;scrollbar-track-color: #FFFFFF;scrollbar-arrow-color: #FFFFFF;}.body-content-item::-webkit-scrollbar {width: 9px;}.body-content-item::-webkit-scrollbar-track {-webkit-box-shadow: none;-webkit-border-radius: 10px;border-radius: 10px;}.body-content-item::-webkit-scrollbar-thumb {-webkit-border-radius: 0px;border-radius: 0;background: rgb(29, 29, 29);-webkit-box-shadow: none;}";
+            "body:after,main{width:100%}html{height:100%;background:grey}body{position:relative;top:0;min-height:100%}body:after{content:'';display:block;height:100%;color:rgba(0,0,0,.6)}#nav__responsive{display:none}@media screen and (max-width:640px){body{top:50px!important}#nav__responsive{display:inline-block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:50px;background:#2B2B2B;-webkit-transition:all .3s ease;transition:all .3s ease}#nav__responsive .nav__left{float:left;height:100%;width:170px}#nav__responsive .nav__left ul{height:100%;margin:0;padding:0}#nav__responsive .nav__left ul li{float:right;height:100%;text-align:left;list-style-type:none;background:#2B2B2B;width:119px}#nav__responsive .nav__left ul li:first-child{float:left;width:50px;text-align:center;background:#2B2B2B;border-right:1px solid #515151}#nav__responsive .nav__left ul li:first-child a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__left ul li:first-child a i{position:absolute;left:15px;top:15px}#nav__responsive .nav__left ul li:last-child a{position:static;display:inline-block;height:100%}#nav__responsive .nav__left ul li:last-child a img{display:block;max-width:92%;max-height:92%;padding:4%;position:relative;top:0;}#nav__responsive .nav__right{float:right;width:calc(100% - 170px);height:50px;background:#2B2B2B;overflow:hidden}#nav__responsive .nav__right ul{float:right;width:150px;height:100%;margin:0;padding:0}#nav__responsive .nav__right ul li{display:inline-block;float:left;width:49px;height:100%;border-left:1px solid #515151}#nav__responsive .nav__right ul li a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__right ul li a i{position:relative;left:15px;top:15px}.nav__responsive--toggle{left:265px!important;-webkit-transition:all .3s ease;transition:all .3s ease}.slide-out-panel{height:100%;min-height:100%;width:265px;background:#2B2B2B;top:0;overflow:hidden;transition:all .3s ease;z-index:1001}.searchbar__container,.slide-out-panel{position:fixed;-webkit-transition:all .3s ease}.left-slide-out-panel{left:-265px;padding:15px}html.left-slide-out-panel-open .left-slide-out-panel{left:0}.searchbar__container{display:none;top:50px;left:0;z-index:9999;width:100%;height:50px;background:#fff;transition:all .3s ease}.slide-out-panel{padding:0;font-family:Lato,Arial,Sans-serif}.slide-out-panel .call-to-action-item{background:#005C18}.slide-out-panel .call-to-action-item ul{margin:0;padding:0}.slide-out-panel .call-to-action-item ul li{font-size:1rem;text-align:left}.slide-out-panel .call-to-action-item ul li a i{float:left;padding: 0 10px 0 0;font-size:1.5rem;color:#fff}.slide-out-panel .call-to-action-item ul li a{display:block;width:240px;padding:.96rem;font-weight:700;text-decoration:none;color:#fff}.slide-out-panel .call-to-action-item ul li small{float:right;padding:.3rem 0 0;font-size:.7rem;font-weight:700;color:#81AE8C}.slide-out-panel .call-to-action-item ul li:last-child{padding:.4rem;font-size:1rem;font-weight:700;font-style:italic;text-align:center;color:#a91e23;background:#fff}.slide-out-panel .page-menu-container>ul>li{display:inline-block;width:100%;text-align:left;background:#2B2B2B;border-bottom:1px solid #515151}.slide-out-panel .page-menu-container>ul>li a{font-weight:400;color:#fff}}.body-content-item{scrollbar-face-color: #367CD2;scrollbar-shadow-color: #FFFFFF;scrollbar-highlight-color: #FFFFFF;scrollbar-3dlight-color: #FFFFFF;scrollbar-darkshadow-color: #FFFFFF;scrollbar-track-color: #FFFFFF;scrollbar-arrow-color: #FFFFFF;}.body-content-item::-webkit-scrollbar {width: 9px;}.body-content-item::-webkit-scrollbar-track {-webkit-box-shadow: none;-webkit-border-radius: 10px;border-radius: 10px;}.body-content-item::-webkit-scrollbar-thumb {-webkit-border-radius: 0px;border-radius: 0;background: rgb(29, 29, 29);-webkit-box-shadow: none;}";
         //create the <style> element
         var stylesTag = '<style></style>';
         //add it to the head of the page
