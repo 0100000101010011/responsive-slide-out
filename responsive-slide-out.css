@@ -14,14 +14,14 @@ body:after {
     height: 100%;
     color: rgba(0, 0, 0, .6);
 }
-#nav__responsive {
+#nav__responsive, .slide-out-panel {
     display: none;
 }
 @media screen and (max-width:640px) {
     body {
     top: 50px!important;
 }
-#nav__responsive {
+#nav__responsive, .slide-out-panel {
     display: inline-block;
     position: fixed;
     top: 0;
