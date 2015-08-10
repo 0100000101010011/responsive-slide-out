@@ -1,7 +1,7 @@
 /*
 author: alvin sanchez, atechapart.com
 origin: ransom carroll, for the goodvibes theme by cart designers @ cartdesigners.com
-ver: 1.5
+ver: 1.6
 */
 
 //ready
@@ -21,13 +21,14 @@ var responsiveSlideout = {
     toggleSlideout: function() {
         //when the hamburger button is clicked
         $('.slideout__button--hamburger').on('click',function(){
+            //slide over top nav bar
             this.toggleTopNavBarSlideRight();
             //slide out the panel
             this.toggleLeftSlideOutPanel();       
         }.bind(this));
     }, 
     toggleTopNavBarSlideRight: function(){
-        //show top nav bar
+        //toggle slide top nav bar over to the right
         $("#nav__responsive").toggleClass('nav__responsive--toggle');
         $(".searchbar__container").toggleClass('nav__responsive--toggle');
     }, 
@@ -38,29 +39,11 @@ var responsiveSlideout = {
         if($('html').hasClass('left-slide-out-panel-open')){
             this.lockPageScroll();
             this.hideSearchFieldContainer();
-            this.renderDarkPageOverlay(); 
-            this.changeHamburgerButtonColor();
-        } else {
+            this.renderDarkPageOverlay();     
+        } else {            
             this.unlockPageScroll();
             this.removeDarkPageOverlay();
-            this.restoreHamburgerButtonColor();
         }
-    }, 
-    changeHamburgerButtonColor: function() {
-        //change hamburger button color for open to red
-        $('.slideout__button--hamburger').css({
-            background: '#a91e23', 
-            "border-right": '1px solid #a91e23', 
-            WebkitTransition : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-            MozTransition    : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-            MsTransition     : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-            OTransition      : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-            transition       : 'background .50s ease-in 0s, border-right .50s ease-in 0s',
-        });
-    }, 
-    restoreHamburgerButtonColor: function() {
-        //change hamburger button color for close back to default (charcoal) color
-        $('.slideout__button--hamburger').css({background: '#2b2b2b', "border-right": '1px solid rgb(81, 81, 81)'});
     }, 
     lockPageScroll: function() {
         //http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
@@ -69,15 +52,15 @@ var responsiveSlideout = {
         var top = $(window).scrollTop();
         var left = $(window).scrollLeft();
 
-        $('html').css('overflow', 'hidden');
         $(window).scroll(function(){
             $(this).scrollTop(top).scrollLeft(left);
-        });
+        });   
+
+        $('body').css('overflow', 'hidden');
     }, 
     unlockPageScroll: function() {
         //http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
-        $('html').css('overflow', 'auto');
-//         $(this).unbind('scroll'); //this is not working right, fix
+        $('body').css('overflow', 'auto');
     }, 
     renderDarkPageOverlay: function() {        
         //render the darken-page element onto the page
@@ -101,11 +84,11 @@ var responsiveSlideout = {
         });
         // when user clicks on the darken-page element
         $('.darken-page').on('click', function(){
-            $(window).unbind('scroll');
             //hide top nav bar
             this.toggleTopNavBarSlideRight();
             //hide the slide out panel
             this.toggleLeftSlideOutPanel();    
+            $(window).unbind('scroll');
         }.bind(this));
     }, 
     removeDarkPageOverlay: function() {        
@@ -321,7 +304,7 @@ var styleCoreResponsiveSlideOutInterfaceCss = {
         //css unminify with: http://mrcoles.com/blog/css-unminify/
         //cache the css
         var css = 
-            "body:after,main{width:100%}html{height:100%;background:grey}body{position:relative;top:0;min-height:100%}body:after{content:'';display:block;height:100%;color:rgba(0,0,0,.6)}#nav__responsive{display:none}@media screen and (max-width:640px){body{top:50px!important}#nav__responsive{display:inline-block;position:fixed;top:0;left:0;z-index:9999;width:100%;height:50px;background:#2B2B2B;-webkit-transition:all .3s ease;transition:all .3s ease}#nav__responsive .nav__left{float:left;height:100%;width:170px}#nav__responsive .nav__left ul{height:100%;margin:0;padding:0}#nav__responsive .nav__left ul li{float:right;height:100%;text-align:left;list-style-type:none;background:#2B2B2B;width:119px}#nav__responsive .nav__left ul li:first-child{float:left;width:50px;text-align:center;background:#2B2B2B;border-right:1px solid #515151}#nav__responsive .nav__left ul li:first-child a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__left ul li:first-child a i{position:absolute;left:15px;top:15px}#nav__responsive .nav__left ul li:last-child a{position:static;display:inline-block;height:100%}#nav__responsive .nav__left ul li:last-child a img{display:block;max-width:92%;max-height:92%;padding:4%;position:relative;top:0;}#nav__responsive .nav__right{float:right;width:calc(100% - 170px);height:50px;background:#2B2B2B;overflow:hidden}#nav__responsive .nav__right ul{float:right;width:150px;height:100%;margin:0;padding:0}#nav__responsive .nav__right ul li{display:inline-block;float:left;width:49px;height:100%;border-left:1px solid #515151}#nav__responsive .nav__right ul li a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__right ul li a i{position:relative;left:15px;top:15px}.nav__responsive--toggle{left:265px!important;-webkit-transition:all .3s ease;transition:all .3s ease}.slide-out-panel{height:100%;min-height:100%;width:265px;background:#2B2B2B;top:0;overflow:hidden;transition:all .3s ease;z-index:1001}.searchbar__container,.slide-out-panel{position:fixed;-webkit-transition:all .3s ease}.left-slide-out-panel{left:-265px;padding:15px}html.left-slide-out-panel-open .left-slide-out-panel{left:0}.searchbar__container{display:none;top:50px;left:0;z-index:9999;width:100%;height:50px;background:#fff;transition:all .3s ease}.slide-out-panel{padding:0;font-family:Lato,Arial,Sans-serif}.slide-out-panel .call-to-action-item{background:#005C18}.slide-out-panel .call-to-action-item ul{margin:0;padding:0}.slide-out-panel .call-to-action-item ul li{font-size:1rem;text-align:left}.slide-out-panel .call-to-action-item ul li a i{float:left;padding: 0 10px 0 0;font-size:1.5rem;color:#fff}.slide-out-panel .call-to-action-item ul li a{display:block;width:240px;padding:.96rem;font-weight:700;text-decoration:none;color:#fff}.slide-out-panel .call-to-action-item ul li small{float:right;padding:.3rem 0 0;font-size:.7rem;font-weight:700;color:#81AE8C}.slide-out-panel .call-to-action-item ul li:last-child{padding:.4rem;font-size:1rem;font-weight:700;font-style:italic;text-align:center;color:#a91e23;background:#fff}.slide-out-panel .page-menu-container>ul>li{display:inline-block;width:100%;text-align:left;background:#2B2B2B;border-bottom:1px solid #515151}.slide-out-panel .page-menu-container>ul>li a{font-weight:400;color:#fff}}.body-content-item{scrollbar-face-color: #367CD2;scrollbar-shadow-color: #FFFFFF;scrollbar-highlight-color: #FFFFFF;scrollbar-3dlight-color: #FFFFFF;scrollbar-darkshadow-color: #FFFFFF;scrollbar-track-color: #FFFFFF;scrollbar-arrow-color: #FFFFFF;}.body-content-item::-webkit-scrollbar {width: 9px;}.body-content-item::-webkit-scrollbar-track {-webkit-box-shadow: none;-webkit-border-radius: 10px;border-radius: 10px;}.body-content-item::-webkit-scrollbar-thumb {-webkit-border-radius: 0px;border-radius: 0;background: rgb(29, 29, 29);-webkit-box-shadow: none;}";
+            "body:after,main{width:100%}html{height:100%;background:grey}body{position:relative;top:0;min-height:100%}body:after{content:'';display:block;height:100%;color:rgba(0,0,0,.6)}#nav__responsive{display:none}@media screen and (max-width:640px){body{top:50px!important}#nav__responsive{display:inline-block;position:fixed;top:0;left:0;width:100%;height:50px;background:#2B2B2B;-webkit-transition:all .3s ease;transition:all .3s ease}#nav__responsive .nav__left{float:left;height:100%;width:170px}#nav__responsive .nav__left ul{height:100%;margin:0;padding:0}#nav__responsive .nav__left ul li{float:right;height:100%;text-align:left;list-style-type:none;background:#2B2B2B;width:119px}#nav__responsive .nav__left ul li:first-child{float:left;width:50px;text-align:center;background:#2B2B2B;border-right:1px solid #515151}#nav__responsive .nav__left ul li:first-child a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__left ul li:first-child a i{position:absolute;left:15px;top:15px}#nav__responsive .nav__left ul li:last-child a{position:static;display:inline-block;height:100%}#nav__responsive .nav__left ul li:last-child a img{display:block;max-width:92%;max-height:92%;padding:4%;position:relative;top:0;}#nav__responsive .nav__right{float:right;width:calc(100% - 170px);height:50px;background:#2B2B2B;overflow:hidden}#nav__responsive .nav__right ul{float:right;width:150px;height:100%;margin:0;padding:0}#nav__responsive .nav__right ul li{display:inline-block;float:left;width:49px;height:100%;border-left:1px solid #515151}#nav__responsive .nav__right ul li a{display:block;height:100%;font-size:21px;color:#fff}#nav__responsive .nav__right ul li a i{position:relative;left:15px;top:15px}.nav__responsive--toggle{left:265px!important;-webkit-transition:all .3s ease;transition:all .3s ease}.slide-out-panel{height:100%;min-height:100%;width:265px;background:#2B2B2B;top:0;overflow:hidden;transition:all .3s ease;z-index:1001}.searchbar__container,.slide-out-panel{position:fixed;-webkit-transition:all .3s ease}.left-slide-out-panel{left:-265px;padding:15px}html.left-slide-out-panel-open .left-slide-out-panel{left:0}.searchbar__container{display:none;top:50px;left:0;z-index:9999;width:100%;height:50px;background:#fff;transition:all .3s ease}.slide-out-panel{padding:0;font-family:Lato,Arial,Sans-serif}.slide-out-panel .call-to-action-item{background:#005C18}.slide-out-panel .call-to-action-item ul{margin:0;padding:0}.slide-out-panel .call-to-action-item ul li{font-size:1rem;text-align:left}.slide-out-panel .call-to-action-item ul li a i{float:left;padding: 0 10px 0 0;font-size:1.5rem;color:#fff}.slide-out-panel .call-to-action-item ul li a{display:block;width:240px;padding:.96rem;font-weight:700;text-decoration:none;color:#fff}.slide-out-panel .call-to-action-item ul li small{float:right;padding:.3rem 0 0;font-size:.7rem;font-weight:700;color:#81AE8C}.slide-out-panel .call-to-action-item ul li:last-child{padding:.4rem;font-size:1rem;font-weight:700;font-style:italic;text-align:center;color:#a91e23;background:#fff}.slide-out-panel .page-menu-container>ul>li{display:inline-block;width:100%;text-align:left;background:#2B2B2B;border-bottom:1px solid #515151}.slide-out-panel .page-menu-container>ul>li a{font-weight:400;color:#fff}}.body-content-item{scrollbar-face-color: #367CD2;scrollbar-shadow-color: #FFFFFF;scrollbar-highlight-color: #FFFFFF;scrollbar-3dlight-color: #FFFFFF;scrollbar-darkshadow-color: #FFFFFF;scrollbar-track-color: #FFFFFF;scrollbar-arrow-color: #FFFFFF;}.body-content-item::-webkit-scrollbar {width: 9px;}.body-content-item::-webkit-scrollbar-track {-webkit-box-shadow: none;-webkit-border-radius: 10px;border-radius: 10px;}.body-content-item::-webkit-scrollbar-thumb {-webkit-border-radius: 0px;border-radius: 0;background: rgb(29, 29, 29);-webkit-box-shadow: none;}";
         //create the <style> element
         var stylesTag = '<style></style>';
         //add it to the head of the page
