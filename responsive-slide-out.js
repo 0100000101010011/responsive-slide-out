@@ -283,24 +283,6 @@ var styleCoreResponsiveSlideOutInterfaceCss = {
     }, 
     styleCoreResponsiveSlideOutInterface: function() {
 
-        //global styling
-        $('html').css({
-            height: '100%', 
-            background: 'rgb(128, 128, 128)'
-        });
-        $('body').css({
-            position: 'relative', 
-            top: '0px', 
-            "min-height": '100%'
-        });
-        $('body:after').css({
-            content: '', 
-            display: 'block', 
-            width: '100%', 
-            height: '100%', 
-            color: 'rgba(0, 0, 0, .6)'
-        });
-
         //css minified with: http://cssminifier.com/
         //css unminify with: http://mrcoles.com/blog/css-unminify/
         //cache the css
