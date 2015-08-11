@@ -6,6 +6,8 @@ an user-friendly responsive navigation bar with a smooth left-side slide out nav
 
 view the demo @ https://albino-amazon.codio.io/demo.html
 
+watch quick video tour @ https://youtu.be/8N8qtXhu-9M
+
 to get started visit the wiki @ https://github.com/atechapart/responsive-slide-out/wiki
 
 features:
