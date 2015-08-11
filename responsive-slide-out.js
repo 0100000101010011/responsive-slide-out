@@ -88,6 +88,7 @@ var responsiveSlideout = {
             this.toggleTopNavBarSlideRight();
             //hide the slide out panel
             this.toggleLeftSlideOutPanel();    
+            //unlock the scrollbar
             $(window).unbind('scroll');
         }.bind(this));
     }, 
