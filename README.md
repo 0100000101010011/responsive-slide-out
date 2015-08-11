@@ -1,6 +1,6 @@
 # responsive-slide-out 
 
-v1.6`
+'v1.6'
 
 ----------
 
@@ -12,7 +12,9 @@ watch quick video tour @ https://youtu.be/8N8qtXhu-9M
 
 to get started visit the wiki @ https://github.com/atechapart/responsive-slide-out/wiki
 
-> **features:**
+----------
+
+**features:**
 
 > designed for mobile (kicks in at 640px width)
 
