@@ -25,7 +25,6 @@ to get started visit the wiki @ https://github.com/atechapart/responsive-slide-o
 
 ----------
 
-
 documentation available @ https://github.com/atechapart/responsive-slide-out/wiki
 
-**feedback, requests, questions and/or contributions welcome
+**feedback, questions, bug reports, and/or contributions welcome
