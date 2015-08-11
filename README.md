@@ -14,7 +14,7 @@ to get started visit the wiki @ https://github.com/atechapart/responsive-slide-o
 
 ----------
 
-**features:**
+## features:
 
 > designed for mobile (kicks in at 640px width)
 
